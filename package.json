@@ -1,0 +1,19 @@
+{
+  "name": "hemi-viem",
+  "version": "1.0.0",
+  "description": "Viem extension for the Hemi Network",
+  "license": "MIT",
+  "author": {
+    "name": "Gabriel Montes",
+    "email": "gabriel@bloq.com"
+  },
+  "main": "src/index.js",
+  "scripts": {},
+  "dependencies": {
+    "viem": "^2.0.0"
+  },
+  "prettier": {
+    "semi": false
+  },
+  "type": "module"
+}
