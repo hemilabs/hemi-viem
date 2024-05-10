@@ -28,6 +28,16 @@ export const hemiSepolia = defineChain({
     },
   },
   contracts: {
+    addressManager: {
+      [sourceId]: {
+        address: '0x23f0022354241FDb721Dc43E7897d7Af662A2995'
+      }
+    },
+    l1CrossDomainMessenger: {
+      [sourceId]: {
+        address: '0x9bCCCf1d222539c4C47E4C6f5749e4d5fA33215c'
+      }
+    },
     l1StandardBridge: {
       [sourceId]: {
         address: "0xc94b1BEe63A3e101FE5F71C80F912b4F4b055925",
