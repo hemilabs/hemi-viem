@@ -1,3 +1,4 @@
+export { hemi } from "./chains/hemi.js"
 export { hemiSepolia } from "./chains/hemi-sepolia.js"
 
 export { hemiPublicOpNodeActions } from "./decorators/public-op-node-actions.js"
