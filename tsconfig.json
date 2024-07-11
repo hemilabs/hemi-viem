@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "noEmit": false,
+    "noImplicitReturns": true,
+    "resolveJsonModule": false,
+    "rootDir": "./src",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2022",
+    "useUnknownInCatchVariables": false
+  },
+  "exclude": ["node_modules"],
+  "include": ["src/**/*.ts"]
+}

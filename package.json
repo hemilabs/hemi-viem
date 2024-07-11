@@ -2,18 +2,49 @@
   "name": "hemi-viem",
   "version": "1.1.0",
   "description": "Viem extension for the Hemi Network",
+  "bugs": {
+    "url": "https://github.com/hemilabs/hemi-viem/issues"
+  },
   "license": "MIT",
   "author": {
     "name": "Gabriel Montes",
     "email": "gabriel@bloq.com"
   },
-  "main": "src/index.js",
-  "scripts": {},
-  "dependencies": {
-    "viem": "^2.0.0"
+  "contributors": [{
+    "name": "Gonzalo D'Elia",
+    "email": "gonzalo@bloq.com"
+  }],
+  "files": [
+    "_esm/**/*",
+    "_types/**/*",
+    "src/**/*.ts"
+  ],
+  "main": "./_esm/index.js",
+  "scripts": {
+    "build": "npm run clean && npm run build:esm && npm run build:types",
+    "build:esm": "tsc --noEmit false --outDir ./_esm --sourceMap",
+    "build:types": "tsc --module esnext --declarationDir ./_types --emitDeclarationOnly --declaration --declarationMap",
+    "clean": "rm -rf ./_esm ./_types",
+    "prepublishOnly": "npm run build",
+    "tsc": "tsc --noEmit"
   },
+  "devDependencies": {
+    "typescript": "5.5.3"
+  },
+  "peerDependencies": {
+    "viem": "^2.x"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./_esm/index.js",
+      "types": "./_types/index.d.ts"
+    }
+  },
+  "module": "./_esm/index.js",
   "prettier": {
     "semi": false
   },
-  "type": "module"
+  "types": "./_types/index.d.ts",
+  "typings": "./_types/index.d.ts"
 }

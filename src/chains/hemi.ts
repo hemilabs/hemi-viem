@@ -5,7 +5,7 @@ const sourceId = 1 // Ethereum mainnet
 
 export const hemi = defineChain({
   ...chainConfig,
-  id: 43111,
+  id: 43_111,
   name: "Hemi Network",
   nativeCurrency: {
     decimals: 18,

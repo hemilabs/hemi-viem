@@ -1,11 +1,11 @@
 import { defineChain } from "viem"
 import { chainConfig } from "viem/op-stack"
 
-const sourceId = 11155111 // Sepolia
+const sourceId = 11_155_111 // Sepolia
 
 export const hemiSepolia = defineChain({
   ...chainConfig,
-  id: 743111,
+  id: 743_111,
   name: "Hemi Sepolia",
   nativeCurrency: {
     decimals: 18,

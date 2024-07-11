@@ -1,1 +1,4 @@
 node_modules
+tsconfig.tsbuildinfo
+_esm
+_types
