@@ -5,16 +5,17 @@
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
     "isolatedModules": true,
-    "module": "ESNext",
+    "module": "ES2020",
     "moduleResolution": "node",
     "noEmit": false,
     "noImplicitReturns": true,
     "resolveJsonModule": false,
+    "rootDir": "./src",
     "skipLibCheck": true,
     "strict": true,
-    "target": "ESNext",
+    "target": "ES2022",
     "useUnknownInCatchVariables": false
   },
   "exclude": ["node_modules"],
-  "include": ["sr*/**/*.ts"]
+  "include": ["src/**/*.ts"]
 }

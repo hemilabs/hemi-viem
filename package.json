@@ -7,19 +7,37 @@
     "name": "Gabriel Montes",
     "email": "gabriel@bloq.com"
   },
-  "main": "src/index.js",
-  "scripts": {
-    "build": "tsc"
+  "main": "./_esm/index.js",
+  "module": "./_esm/index.js",
+  "types": "./_types/index.d.ts",
+  "typings": "./_types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./_esm/index.js",
+      "types": "./_types/index.d.ts"
+    }
   },
-  "dependencies": {
-    "viem": "^2.0.0"
+  "files": [
+    "_esm/**/*",
+    "_types/**/*",
+    "src/**/*.ts"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run build:esm && npm run build:types",
+    "build:esm": "tsc --noEmit false --outDir ./_esm --sourceMap",
+    "build:types": "tsc --module esnext --declarationDir ./_types --emitDeclarationOnly --declaration --declarationMap",
+    "clean": "rm -rf ./_esm ./_types",
+    "prepublishOnly": "npm run build",
+    "tsc": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "viem": "^2.x"
   },
   "prettier": {
     "semi": false
   },
-  "type": "module",
   "devDependencies": {
-    "ts-extras": "0.11.0",
     "typescript": "5.5.3"
-  }
+  },
+  "type": "module"
 }
