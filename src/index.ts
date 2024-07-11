@@ -5,6 +5,7 @@ export { hemiPublicOpNodeActions } from "./decorators/public-op-node-actions.js"
 export { getBtcFinalityByBlockHash } from "./actions/get-btc-finality-by-block-hash.js"
 
 export { hemiPublicBitcoinKitActions } from "./decorators/public-bitcoin-kit-actions.js"
+export { hemiPublicBitcoinVaultActions } from "./decorators/public-bitcoin-vault-actions.js"
 export {
   getBitcoinAddressBalance,
   getHeaderN,
