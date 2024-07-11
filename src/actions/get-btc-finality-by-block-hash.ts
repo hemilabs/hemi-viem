@@ -1,4 +1,4 @@
-import { type Chain, type Hash, type Client, type Transport } from "viem"
+import { type Chain, type Hash, type Client, type Transport, http } from "viem"
 
 export async function getBtcFinalityByBlockHash<
   TTransport extends Transport = Transport,
@@ -6,7 +6,9 @@ export async function getBtcFinalityByBlockHash<
 >(client: Client<TTransport, TChain>, parameters: { hash: Hash }) {
   const { hash } = parameters
   try {
-    const response = await client.transport.request({
+    const opNodeHttp = http(client.chain!.rpcUrls.opNode.http[0])
+    const transport = opNodeHttp({})
+    const response = await transport.request({
       method: "optimism_btcFinalityByBlockHash",
       params: [hash],
     })
