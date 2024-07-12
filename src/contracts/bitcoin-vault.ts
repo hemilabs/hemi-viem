@@ -1,358 +1,358 @@
 export const bitcoinVaultAbi = [
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "_owner",
-        "type": "address"
+        internalType: 'address',
+        name: '_owner',
+        type: 'address',
       },
       {
-        "internalType": "address",
-        "name": "_operator",
-        "type": "address"
+        internalType: 'address',
+        name: '_operator',
+        type: 'address',
       },
       {
-        "internalType": "contract IBitcoinKit",
-        "name": "_bitcoinKitContract",
-        "type": "address"
+        internalType: 'contract IBitcoinKit',
+        name: '_bitcoinKitContract',
+        type: 'address',
       },
       {
-        "internalType": "string",
-        "name": "_bitcoinAddress",
-        "type": "string"
+        internalType: 'string',
+        name: '_bitcoinAddress',
+        type: 'string',
       },
       {
-        "internalType": "contract ERC20",
-        "name": "_collateralAssetContract",
-        "type": "address"
-      }
+        internalType: 'contract ERC20',
+        name: '_collateralAssetContract',
+        type: 'address',
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    stateMutability: 'nonpayable',
+    type: 'constructor',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "bytes32",
-        "name": "txid",
-        "type": "bytes32"
-      }
+        internalType: 'bytes32',
+        name: 'txid',
+        type: 'bytes32',
+      },
     ],
-    "name": "DepositInvalidOpReturnNotPopulated",
-    "type": "error"
+    name: 'DepositInvalidOpReturnNotPopulated',
+    type: 'error',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "invalidOperator",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'invalidOperator',
+        type: 'address',
+      },
     ],
-    "name": "InvalidAuthorizedOperator",
-    "type": "error"
+    name: 'InvalidAuthorizedOperator',
+    type: 'error',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "invalidOwner",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'invalidOwner',
+        type: 'address',
+      },
     ],
-    "name": "InvalidAuthorizedOwner",
-    "type": "error"
+    name: 'InvalidAuthorizedOwner',
+    type: 'error',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "string",
-        "name": "invalidBitcoinAddress",
-        "type": "string"
-      }
+        internalType: 'string',
+        name: 'invalidBitcoinAddress',
+        type: 'string',
+      },
     ],
-    "name": "InvalidBitcoinAddress",
-    "type": "error"
+    name: 'InvalidBitcoinAddress',
+    type: 'error',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "unauthorizedOperator",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'unauthorizedOperator',
+        type: 'address',
+      },
     ],
-    "name": "UnauthorizedOperator",
-    "type": "error"
+    name: 'UnauthorizedOperator',
+    type: 'error',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32',
+      },
     ],
-    "name": "acknowledgedDeposits",
-    "outputs": [
+    name: 'acknowledgedDeposits',
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "bitcoinCustodyAddress",
-    "outputs": [
+    inputs: [],
+    name: 'bitcoinCustodyAddress',
+    outputs: [
       {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
+        internalType: 'string',
+        name: '',
+        type: 'string',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "bitcoinKitContract",
-    "outputs": [
+    inputs: [],
+    name: 'bitcoinKitContract',
+    outputs: [
       {
-        "internalType": "contract IBitcoinKit",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'contract IBitcoinKit',
+        name: '',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "bytes",
-        "name": "_input",
-        "type": "bytes"
-      }
+        internalType: 'bytes',
+        name: '_input',
+        type: 'bytes',
+      },
     ],
-    "name": "bytesToAddress",
-    "outputs": [
+    name: 'bytesToAddress',
+    outputs: [
       {
-        "internalType": "address",
-        "name": "addr",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'addr',
+        type: 'address',
+      },
     ],
-    "stateMutability": "pure",
-    "type": "function"
+    stateMutability: 'pure',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "bytes32",
-        "name": "_txid",
-        "type": "bytes32"
-      }
+        internalType: 'bytes32',
+        name: '_txid',
+        type: 'bytes32',
+      },
     ],
-    "name": "confirmDeposit",
-    "outputs": [
+    name: 'confirmDeposit',
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "success",
-        "type": "bool"
+        internalType: 'bool',
+        name: 'success',
+        type: 'bool',
       },
       {
-        "internalType": "uint256",
-        "name": "satsDeposited",
-        "type": "uint256"
+        internalType: 'uint256',
+        name: 'satsDeposited',
+        type: 'uint256',
       },
       {
-        "internalType": "address",
-        "name": "tunnelDestination",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'tunnelDestination',
+        type: 'address',
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
+      },
     ],
-    "name": "depositCollateral",
-    "outputs": [
+    name: 'depositCollateral',
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "uint8",
-        "name": "c",
-        "type": "uint8"
-      }
+        internalType: 'uint8',
+        name: 'c',
+        type: 'uint8',
+      },
     ],
-    "name": "fromHexChar",
-    "outputs": [
+    name: 'fromHexChar',
+    outputs: [
       {
-        "internalType": "uint8",
-        "name": "",
-        "type": "uint8"
-      }
+        internalType: 'uint8',
+        name: '',
+        type: 'uint8',
+      },
     ],
-    "stateMutability": "pure",
-    "type": "function"
+    stateMutability: 'pure',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "getBitcoinCustodyAddress",
-    "outputs": [
+    inputs: [],
+    name: 'getBitcoinCustodyAddress',
+    outputs: [
       {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
+        internalType: 'string',
+        name: '',
+        type: 'string',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "getEffectiveCollateralBalance",
-    "outputs": [
+    inputs: [],
+    name: 'getEffectiveCollateralBalance',
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "getOperator",
-    "outputs": [
+    inputs: [],
+    name: 'getOperator',
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "bytes",
-        "name": "source",
-        "type": "bytes"
+        internalType: 'bytes',
+        name: 'source',
+        type: 'bytes',
       },
       {
-        "internalType": "uint256",
-        "name": "startIndex",
-        "type": "uint256"
+        internalType: 'uint256',
+        name: 'startIndex',
+        type: 'uint256',
       },
       {
-        "internalType": "uint256",
-        "name": "endIndex",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: 'endIndex',
+        type: 'uint256',
+      },
     ],
-    "name": "hexAsciiBytesToBytes",
-    "outputs": [
+    name: 'hexAsciiBytesToBytes',
+    outputs: [
       {
-        "internalType": "bytes",
-        "name": "result",
-        "type": "bytes"
-      }
+        internalType: 'bytes',
+        name: 'result',
+        type: 'bytes',
+      },
     ],
-    "stateMutability": "pure",
-    "type": "function"
+    stateMutability: 'pure',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "bytes32",
-        "name": "_txid",
-        "type": "bytes32"
-      }
+        internalType: 'bytes32',
+        name: '_txid',
+        type: 'bytes32',
+      },
     ],
-    "name": "isDepositAlreadyConfirmed",
-    "outputs": [
+    name: 'isDepositAlreadyConfirmed',
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "operator",
-    "outputs": [
+    inputs: [],
+    name: 'operator',
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "owner",
-    "outputs": [
+    inputs: [],
+    name: 'owner',
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "recoverIncorrectDeposits",
-    "outputs": [
+    inputs: [],
+    name: 'recoverIncorrectDeposits',
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "withdrawCollateral",
-    "outputs": [
+    inputs: [],
+    name: 'withdrawCollateral',
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  }
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
 ] as const

@@ -18,13 +18,13 @@ npm install viem hemi-viem
 ```js
 // example.js
 
-import { createPublicClient, http } from "viem"
+import { createPublicClient, http } from 'viem'
 
 import {
   hemiPublicBitcoinKitActions,
   hemiPublicOpNodeActions,
   hemiSepolia,
-} from "hemi-viem"
+} from 'hemi-viem'
 
 const parameters = { chain: hemiSepolia, transport: http() }
 const client = createPublicClient(parameters)

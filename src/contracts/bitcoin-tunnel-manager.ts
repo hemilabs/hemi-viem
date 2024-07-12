@@ -1,477 +1,477 @@
 import { type Address, type Chain } from 'viem'
-import { hemiSepolia } from "../chains/hemi-sepolia.js"
+import { hemiSepolia } from '../chains/hemi-sepolia.js'
 
 export const bitcoinTunnelManagerAddresses: Record<Chain['id'], Address> = {
-  [hemiSepolia.id]: "0xBB3c3E0D5D2Ff65492deAeA721b331851befc267",
+  [hemiSepolia.id]: '0xBB3c3E0D5D2Ff65492deAeA721b331851befc267',
 }
 
 export const bitcoinTunnelManagerAbi = [
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "_bitcoinKitAddress",
-        "type": "address"
+        internalType: 'address',
+        name: '_bitcoinKitAddress',
+        type: 'address',
       },
       {
-        "internalType": "address",
-        "name": "_permittedCollateralToken",
-        "type": "address"
+        internalType: 'address',
+        name: '_permittedCollateralToken',
+        type: 'address',
       },
       {
-        "internalType": "address",
-        "name": "_collateralTokenBTCPriceOracle",
-        "type": "address"
+        internalType: 'address',
+        name: '_collateralTokenBTCPriceOracle',
+        type: 'address',
       },
       {
-        "internalType": "uint32",
-        "name": "_initialOpeningCollateralRatio",
-        "type": "uint32"
+        internalType: 'uint32',
+        name: '_initialOpeningCollateralRatio',
+        type: 'uint32',
       },
       {
-        "internalType": "uint32",
-        "name": "_liquidationCollateralRatio",
-        "type": "uint32"
+        internalType: 'uint32',
+        name: '_liquidationCollateralRatio',
+        type: 'uint32',
       },
       {
-        "internalType": "uint256",
-        "name": "_minimumCollateralDepositAmount",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: '_minimumCollateralDepositAmount',
+        type: 'uint256',
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    stateMutability: 'nonpayable',
+    type: 'constructor',
   },
   {
-    "inputs": [],
-    "name": "GenericWithdrawalFailed",
-    "type": "error"
+    inputs: [],
+    name: 'GenericWithdrawalFailed',
+    type: 'error',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "operator",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'operator',
+        type: 'address',
+      },
     ],
-    "name": "OperatorAlreadyCreatedVault",
-    "type": "error"
+    name: 'OperatorAlreadyCreatedVault',
+    type: 'error',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
+      },
     ],
-    "name": "VaultInsufficientBalanceForWithdrawal",
-    "type": "error"
+    name: 'VaultInsufficientBalanceForWithdrawal',
+    type: 'error',
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "btcTxid",
-        "type": "bytes32"
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'btcTxid',
+        type: 'bytes32',
       },
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "depositer",
-        "type": "address"
+        indexed: true,
+        internalType: 'address',
+        name: 'depositer',
+        type: 'address',
       },
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "vaultAddress",
-        "type": "address"
+        indexed: true,
+        internalType: 'address',
+        name: 'vaultAddress',
+        type: 'address',
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
+      },
     ],
-    "name": "DepositConfirmed",
-    "type": "event"
+    name: 'DepositConfirmed',
+    type: 'event',
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "operator",
-        "type": "address"
+        indexed: true,
+        internalType: 'address',
+        name: 'operator',
+        type: 'address',
       },
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "vaultAddress",
-        "type": "address"
-      }
+        indexed: true,
+        internalType: 'address',
+        name: 'vaultAddress',
+        type: 'address',
+      },
     ],
-    "name": "VaultActivated",
-    "type": "event"
+    name: 'VaultActivated',
+    type: 'event',
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "operator",
-        "type": "address"
+        indexed: true,
+        internalType: 'address',
+        name: 'operator',
+        type: 'address',
       },
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "vaultAddress",
-        "type": "address"
-      }
+        indexed: true,
+        internalType: 'address',
+        name: 'vaultAddress',
+        type: 'address',
+      },
     ],
-    "name": "VaultCreated",
-    "type": "event"
+    name: 'VaultCreated',
+    type: 'event',
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "vaultAddress",
-        "type": "address"
+        indexed: true,
+        internalType: 'address',
+        name: 'vaultAddress',
+        type: 'address',
       },
       {
-        "indexed": true,
-        "internalType": "uint32",
-        "name": "withdrawalCounter",
-        "type": "uint32"
+        indexed: true,
+        internalType: 'uint32',
+        name: 'withdrawalCounter',
+        type: 'uint32',
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amountAfterFees",
-        "type": "uint256"
-      }
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amountAfterFees',
+        type: 'uint256',
+      },
     ],
-    "name": "WithdrawalFinalized",
-    "type": "event"
+    name: 'WithdrawalFinalized',
+    type: 'event',
   },
   {
-    "anonymous": false,
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "withdrawer",
-        "type": "address"
+        indexed: true,
+        internalType: 'address',
+        name: 'withdrawer',
+        type: 'address',
       },
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "vaultAddress",
-        "type": "address"
+        indexed: true,
+        internalType: 'address',
+        name: 'vaultAddress',
+        type: 'address',
       },
       {
-        "indexed": true,
-        "internalType": "uint32",
-        "name": "withdrawalCounter",
-        "type": "uint32"
+        indexed: true,
+        internalType: 'uint32',
+        name: 'withdrawalCounter',
+        type: 'uint32',
       },
       {
-        "indexed": false,
-        "internalType": "string",
-        "name": "btcAddress",
-        "type": "string"
+        indexed: false,
+        internalType: 'string',
+        name: 'btcAddress',
+        type: 'string',
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
+      },
     ],
-    "name": "WithdrawalInitiated",
-    "type": "event"
+    name: 'WithdrawalInitiated',
+    type: 'event',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
     ],
-    "name": "allOwners",
-    "outputs": [
+    name: 'allOwners',
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "allOwnersSize",
-    "outputs": [
+    inputs: [],
+    name: 'allOwnersSize',
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "bitcoinKitContract",
-    "outputs": [
+    inputs: [],
+    name: 'bitcoinKitContract',
+    outputs: [
       {
-        "internalType": "contract IBitcoinKit",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'contract IBitcoinKit',
+        name: '',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "btcTokenContract",
-    "outputs": [
+    inputs: [],
+    name: 'btcTokenContract',
+    outputs: [
       {
-        "internalType": "contract BTCToken",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'contract BTCToken',
+        name: '',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "collateralBTCPriceOracle",
-    "outputs": [
+    inputs: [],
+    name: 'collateralBTCPriceOracle',
+    outputs: [
       {
-        "internalType": "contract IAssetPriceOracle",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'contract IAssetPriceOracle',
+        name: '',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "bytes32",
-        "name": "_txid",
-        "type": "bytes32"
+        internalType: 'bytes32',
+        name: '_txid',
+        type: 'bytes32',
       },
       {
-        "internalType": "address",
-        "name": "vaultOwner",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'vaultOwner',
+        type: 'address',
+      },
     ],
-    "name": "confirmDeposit",
-    "outputs": [
+    name: 'confirmDeposit',
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "string",
-        "name": "btcAddress",
-        "type": "string"
-      }
+        internalType: 'string',
+        name: 'btcAddress',
+        type: 'string',
+      },
     ],
-    "name": "createVault",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: 'createVault',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "vaultOperator",
-        "type": "address"
+        internalType: 'address',
+        name: 'vaultOperator',
+        type: 'address',
       },
       {
-        "internalType": "uint32",
-        "name": "withdrawalIndex",
-        "type": "uint32"
+        internalType: 'uint32',
+        name: 'withdrawalIndex',
+        type: 'uint32',
       },
       {
-        "internalType": "bytes32",
-        "name": "_txid",
-        "type": "bytes32"
-      }
+        internalType: 'bytes32',
+        name: '_txid',
+        type: 'bytes32',
+      },
     ],
-    "name": "finalizeWithdrawal",
-    "outputs": [
+    name: 'finalizeWithdrawal',
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "success",
-        "type": "bool"
-      }
+        internalType: 'bool',
+        name: 'success',
+        type: 'bool',
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
     ],
-    "name": "getBtcAddressOfVaultByOwner",
-    "outputs": [
+    name: 'getBtcAddressOfVaultByOwner',
+    outputs: [
       {
-        "internalType": "string",
-        "name": "btcAddress",
-        "type": "string"
-      }
+        internalType: 'string',
+        name: 'btcAddress',
+        type: 'string',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
     ],
-    "name": "getVaultAddressByOwner",
-    "outputs": [
+    name: 'getVaultAddressByOwner',
+    outputs: [
       {
-        "internalType": "address",
-        "name": "vaultAddress",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'vaultAddress',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "string",
-        "name": "btcAddress",
-        "type": "string"
-      }
+        internalType: 'string',
+        name: 'btcAddress',
+        type: 'string',
+      },
     ],
-    "name": "getVaultOwnerByBTCAddress",
-    "outputs": [
+    name: 'getVaultOwnerByBTCAddress',
+    outputs: [
       {
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "string",
-        "name": "btcAddress",
-        "type": "string"
+        internalType: 'string',
+        name: 'btcAddress',
+        type: 'string',
       },
       {
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
       },
       {
-        "internalType": "address",
-        "name": "vaultOperator",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: 'vaultOperator',
+        type: 'address',
+      },
     ],
-    "name": "initiateWithdrawal",
-    "outputs": [
+    name: 'initiateWithdrawal',
+    outputs: [
       {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32',
+      },
     ],
-    "name": "ownerByBTCAddressHash",
-    "outputs": [
+    name: 'ownerByBTCAddressHash',
+    outputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [],
-    "name": "permittedCollateralToken",
-    "outputs": [
+    inputs: [],
+    name: 'permittedCollateralToken',
+    outputs: [
       {
-        "internalType": "contract ERC20",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'contract ERC20',
+        name: '',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    "inputs": [
+    inputs: [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
     ],
-    "name": "vaultsByOwner",
-    "outputs": [
+    name: 'vaultsByOwner',
+    outputs: [
       {
-        "internalType": "contract BitcoinVault",
-        "name": "",
-        "type": "address"
-      }
+        internalType: 'contract BitcoinVault',
+        name: '',
+        type: 'address',
+      },
     ],
-    "stateMutability": "view",
-    "type": "function"
-  }
+    stateMutability: 'view',
+    type: 'function',
+  },
 ] as const
