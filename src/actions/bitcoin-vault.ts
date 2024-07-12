@@ -9,7 +9,6 @@ export function acknowledgedDeposits<
 >(client: Client<TTransport, TChain>, parameters: { txId: string, vaultAddress: Address }) {
   const { txId, vaultAddress  } = parameters
   const hash: Hash = isHash(txId) ? txId : `0x${txId}`
-  
   return readContract(client, {
     address: vaultAddress,
     abi: bitcoinVaultAbi,

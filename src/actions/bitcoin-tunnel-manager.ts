@@ -8,7 +8,6 @@ export function getVaultOwnerByBTCAddress<
   TChain extends Chain | undefined = Chain | undefined
 >(client: Client<TTransport, TChain>, parameters: { btcAddress: string }) {
   const { btcAddress } = parameters
-
   return readContract(client, {
     abi: bitcoinTunnelManagerAbi,
     address: bitcoinTunnelManagerAddresses[client.chain!.id],
@@ -22,7 +21,6 @@ export function getVaultAddressByOwner<
   TChain extends Chain | undefined = Chain | undefined
 >(client: Client<TTransport, TChain>, parameters: { ownerAddress: Address }) {
   const { ownerAddress } = parameters
-  
   return readContract(client, {
     address: bitcoinTunnelManagerAddresses[client.chain!.id],
     abi: bitcoinTunnelManagerAbi,
