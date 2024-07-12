@@ -1,7 +1,7 @@
-import { type Chain, type Transport } from 'viem'
+import { type Chain, type Transport } from "viem";
 
-import { actionsToDecorator } from './actions-to-decorator.js'
-import * as bitcoinKitActions from '../actions/bitcoin-kit.js'
+import { actionsToDecorator } from "./actions-to-decorator.js";
+import * as bitcoinKitActions from "../actions/bitcoin-kit.js";
 
 export const hemiPublicBitcoinKitActions = <
   TTransport extends Transport = Transport,
@@ -9,4 +9,4 @@ export const hemiPublicBitcoinKitActions = <
 >() =>
   actionsToDecorator<typeof bitcoinKitActions, TTransport, TChain>(
     bitcoinKitActions,
-  )
+  );

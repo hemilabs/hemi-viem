@@ -57,11 +57,7 @@
   },
   "module": "./_esm/index.js",
   "prettier": {
-    "arrowParens": "avoid",
-    "quoteProps": "consistent",
-    "semi": false,
-    "singleQuote": true,
-    "tabWidth": 2
+    "quoteProps": "consistent"
   },
   "types": "./_types/index.d.ts",
   "typings": "./_types/index.d.ts"

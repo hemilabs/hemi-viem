@@ -1,7 +1,7 @@
-import { type Chain, type Transport } from 'viem'
+import { type Chain, type Transport } from "viem";
 
-import { actionsToDecorator } from './actions-to-decorator.js'
-import * as bitcoinTunnelManagerActions from '../actions/bitcoin-tunnel-manager.js'
+import { actionsToDecorator } from "./actions-to-decorator.js";
+import * as bitcoinTunnelManagerActions from "../actions/bitcoin-tunnel-manager.js";
 
 export const hemiPublicBitcoinTunnelManagerActions = <
   TTransport extends Transport = Transport,
@@ -9,4 +9,4 @@ export const hemiPublicBitcoinTunnelManagerActions = <
 >() =>
   actionsToDecorator<typeof bitcoinTunnelManagerActions, TTransport, TChain>(
     bitcoinTunnelManagerActions,
-  )
+  );
