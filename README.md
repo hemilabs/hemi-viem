@@ -18,27 +18,27 @@ npm install viem hemi-viem
 ```js
 // example.js
 
-import { createPublicClient, http } from "viem"
+import { createPublicClient, http } from "viem";
 
 import {
   hemiPublicBitcoinKitActions,
   hemiPublicOpNodeActions,
   hemiSepolia,
-} from "hemi-viem"
+} from "hemi-viem";
 
-const parameters = { chain: hemiSepolia, transport: http() }
+const parameters = { chain: hemiSepolia, transport: http() };
 const client = createPublicClient(parameters)
   .extend(hemiPublicOpNodeActions())
-  .extend(hemiPublicBitcoinKitActions())
+  .extend(hemiPublicBitcoinKitActions());
 
-const blockNumber = await client.getBlockNumber()
-const block = await client.getBlock({ blockNumber: blockNumber - 100n })
+const blockNumber = await client.getBlockNumber();
+const block = await client.getBlock({ blockNumber: blockNumber - 100n });
 
-const btcFinality = await client.getBtcFinalityByBlockHash(block)
-console.log(btcFinality)
+const btcFinality = await client.getBtcFinalityByBlockHash(block);
+console.log(btcFinality);
 
-const btcHeader = await client.getLastHeader()
-console.log(btcHeader)
+const btcHeader = await client.getLastHeader();
+console.log(btcHeader);
 ```
 
 Output:

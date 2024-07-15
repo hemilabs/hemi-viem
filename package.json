@@ -1,6 +1,6 @@
 {
   "name": "hemi-viem",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Viem extension for the Hemi Network",
   "bugs": {
     "url": "https://github.com/hemilabs/hemi-viem/issues"
@@ -10,10 +10,12 @@
     "name": "Gabriel Montes",
     "email": "gabriel@bloq.com"
   },
-  "contributors": [{
-    "name": "Gonzalo D'Elia",
-    "email": "gonzalo@bloq.com"
-  }],
+  "contributors": [
+    {
+      "name": "Gonzalo D'Elia",
+      "email": "gonzalo@bloq.com"
+    }
+  ],
   "files": [
     "_esm/**/*",
     "_types/**/*",
@@ -25,10 +27,14 @@
     "build:esm": "tsc --noEmit false --outDir ./_esm --sourceMap",
     "build:types": "tsc --module esnext --declarationDir ./_types --emitDeclarationOnly --declaration --declarationMap",
     "clean": "rm -rf ./_esm ./_types",
+    "format:check": "prettier --check .",
     "prepublishOnly": "npm run build",
     "tsc": "tsc --noEmit"
   },
   "devDependencies": {
+    "husky": "4.3.8",
+    "lint-staged": "15.2.7",
+    "prettier": "3.3.2",
     "typescript": "5.5.3"
   },
   "peerDependencies": {
@@ -41,9 +47,17 @@
       "types": "./_types/index.d.ts"
     }
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,md,ts,}": "prettier --write"
+  },
   "module": "./_esm/index.js",
   "prettier": {
-    "semi": false
+    "quoteProps": "consistent"
   },
   "types": "./_types/index.d.ts",
   "typings": "./_types/index.d.ts"

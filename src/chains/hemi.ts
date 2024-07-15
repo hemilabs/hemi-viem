@@ -1,7 +1,7 @@
-import { defineChain } from "viem"
-import { chainConfig } from "viem/op-stack"
+import { defineChain } from "viem";
+import { chainConfig } from "viem/op-stack";
 
-const sourceId = 1 // Ethereum mainnet
+const sourceId = 1; // Ethereum mainnet
 
 export const hemi = defineChain({
   ...chainConfig,
@@ -28,4 +28,4 @@ export const hemi = defineChain({
     },
   },
   sourceId,
-})
+});

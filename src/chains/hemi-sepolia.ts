@@ -1,7 +1,7 @@
-import { defineChain } from "viem"
-import { chainConfig } from "viem/op-stack"
+import { defineChain } from "viem";
+import { chainConfig } from "viem/op-stack";
 
-const sourceId = 11_155_111 // Sepolia
+const sourceId = 11_155_111; // Sepolia
 
 export const hemiSepolia = defineChain({
   ...chainConfig,
@@ -30,13 +30,13 @@ export const hemiSepolia = defineChain({
   contracts: {
     addressManager: {
       [sourceId]: {
-        address: '0x23f0022354241FDb721Dc43E7897d7Af662A2995'
-      }
+        address: "0x23f0022354241FDb721Dc43E7897d7Af662A2995",
+      },
     },
     l1CrossDomainMessenger: {
       [sourceId]: {
-        address: '0x9bCCCf1d222539c4C47E4C6f5749e4d5fA33215c'
-      }
+        address: "0x9bCCCf1d222539c4C47E4C6f5749e4d5fA33215c",
+      },
     },
     l1StandardBridge: {
       [sourceId]: {
@@ -60,4 +60,4 @@ export const hemiSepolia = defineChain({
   },
   testnet: true,
   sourceId,
-})
+});
