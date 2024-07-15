@@ -1,4 +1,4 @@
-import { type Address, type Client, type Chain, type Transport } from "viem";
+import { type Address, type Client } from "viem";
 import { readContract } from "viem/actions";
 
 import {
@@ -6,10 +6,10 @@ import {
   bitcoinTunnelManagerAddresses,
 } from "../contracts/bitcoin-tunnel-manager.js";
 
-export function getVaultOwnerByBTCAddress<
-  TTransport extends Transport = Transport,
-  TChain extends Chain | undefined = Chain | undefined,
->(client: Client<TTransport, TChain>, parameters: { btcAddress: string }) {
+export function getVaultOwnerByBTCAddress(
+  client: Client,
+  parameters: { btcAddress: string },
+) {
   const { btcAddress } = parameters;
   return readContract(client, {
     abi: bitcoinTunnelManagerAbi,
@@ -19,10 +19,10 @@ export function getVaultOwnerByBTCAddress<
   });
 }
 
-export function getVaultAddressByOwner<
-  TTransport extends Transport = Transport,
-  TChain extends Chain | undefined = Chain | undefined,
->(client: Client<TTransport, TChain>, parameters: { ownerAddress: Address }) {
+export function getVaultAddressByOwner(
+  client: Client,
+  parameters: { ownerAddress: Address },
+) {
   const { ownerAddress } = parameters;
   return readContract(client, {
     address: bitcoinTunnelManagerAddresses[client.chain!.id],

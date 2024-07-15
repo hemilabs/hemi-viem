@@ -1,10 +1,4 @@
-import {
-  isHash,
-  type Chain,
-  type Client,
-  type Hash,
-  type Transport,
-} from "viem";
+import { type Client, isHash, type Hash } from "viem";
 import { readContract } from "viem/actions";
 
 import {
@@ -12,10 +6,10 @@ import {
   bitcoinKitTxAddresses,
 } from "../contracts/bitcoin-kit-txs.js";
 
-export function getBitcoinAddressBalance<
-  TTransport extends Transport = Transport,
-  TChain extends Chain | undefined = Chain | undefined,
->(client: Client<TTransport, TChain>, parameters: { btcAddress: string }) {
+export function getBitcoinAddressBalance(
+  client: Client,
+  parameters: { btcAddress: string },
+) {
   const { btcAddress } = parameters;
   return readContract(client, {
     address: bitcoinKitTxAddresses[client.chain!.id],
@@ -25,10 +19,7 @@ export function getBitcoinAddressBalance<
   });
 }
 
-export function getHeaderN<
-  TTransport extends Transport = Transport,
-  TChain extends Chain | undefined = Chain | undefined,
->(client: Client<TTransport, TChain>, parameters: { height: number }) {
+export function getHeaderN(client: Client, parameters: { height: number }) {
   const { height } = parameters;
   return readContract(client, {
     address: bitcoinKitTxAddresses[client.chain!.id],
@@ -38,10 +29,7 @@ export function getHeaderN<
   });
 }
 
-export function getLastHeader<
-  TTransport extends Transport = Transport,
-  TChain extends Chain | undefined = Chain | undefined,
->(client: Client<TTransport, TChain>) {
+export function getLastHeader(client: Client) {
   return readContract(client, {
     address: bitcoinKitTxAddresses[client.chain!.id],
     abi: bitcoinKitTxsAbi,
@@ -50,10 +38,10 @@ export function getLastHeader<
   });
 }
 
-export function getTransactionByTxId<
-  TTransport extends Transport = Transport,
-  TChain extends Chain | undefined = Chain | undefined,
->(client: Client<TTransport, TChain>, parameters: { txId: string }) {
+export function getTransactionByTxId(
+  client: Client,
+  parameters: { txId: string },
+) {
   const { txId } = parameters;
   const hash: Hash = isHash(txId) ? txId : `0x${txId}`;
   return readContract(client, {
@@ -64,10 +52,7 @@ export function getTransactionByTxId<
   });
 }
 
-export function getTxConfirmations<
-  TTransport extends Transport = Transport,
-  TChain extends Chain | undefined = Chain | undefined,
->(client: Client<TTransport, TChain>, parameters: { txId: Hash }) {
+export function getTxConfirmations(client: Client, parameters: { txId: Hash }) {
   const { txId } = parameters;
   return readContract(client, {
     address: bitcoinKitTxAddresses[client.chain!.id],
@@ -77,11 +62,8 @@ export function getTxConfirmations<
   });
 }
 
-export function getUtxosForBitcoinAddress<
-  TTransport extends Transport = Transport,
-  TChain extends Chain | undefined = Chain | undefined,
->(
-  client: Client<TTransport, TChain>,
+export function getUtxosForBitcoinAddress(
+  client: Client,
   parameters: { btcAddress: string; pageNumber: bigint; pageSize: bigint },
 ) {
   const { btcAddress, pageNumber, pageSize } = parameters;

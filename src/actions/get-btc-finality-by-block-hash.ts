@@ -1,9 +1,9 @@
-import { type Chain, type Hash, type Client, type Transport, http } from "viem";
+import { type Client, type Hash, http } from "viem";
 
-export async function getBtcFinalityByBlockHash<
-  TTransport extends Transport = Transport,
-  TChain extends Chain | undefined = Chain | undefined,
->(client: Client<TTransport, TChain>, parameters: { hash: Hash }) {
+export async function getBtcFinalityByBlockHash(
+  client: Client,
+  parameters: { hash: Hash },
+) {
   const { hash } = parameters;
   try {
     const opNodeHttp = http(client.chain!.rpcUrls.opNode.http[0]);

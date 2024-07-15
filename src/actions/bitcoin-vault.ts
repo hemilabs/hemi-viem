@@ -1,20 +1,10 @@
-import {
-  type Address,
-  type Chain,
-  type Client,
-  type Hash,
-  type Transport,
-  isHash,
-} from "viem";
+import { type Address, type Client, type Hash, isHash } from "viem";
 import { readContract } from "viem/actions";
 
 import { bitcoinVaultAbi } from "../contracts/bitcoin-vault.js";
 
-export function acknowledgedDeposits<
-  TTransport extends Transport = Transport,
-  TChain extends Chain | undefined = Chain | undefined,
->(
-  client: Client<TTransport, TChain>,
+export function acknowledgedDeposits(
+  client: Client,
   parameters: { txId: string; vaultAddress: Address },
 ) {
   const { txId, vaultAddress } = parameters;
@@ -27,10 +17,10 @@ export function acknowledgedDeposits<
   });
 }
 
-export function getBitcoinCustodyAddress<
-  TTransport extends Transport = Transport,
-  TChain extends Chain | undefined = Chain | undefined,
->(client: Client<TTransport, TChain>, parameters: { vaultAddress: Address }) {
+export function getBitcoinCustodyAddress(
+  client: Client,
+  parameters: { vaultAddress: Address },
+) {
   const { vaultAddress } = parameters;
   return readContract(client, {
     address: vaultAddress,
