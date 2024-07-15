@@ -1,7 +1,7 @@
 import { type Address, type Client, type Hash, isHash } from "viem";
 import { readContract } from "viem/actions";
 
-import { bitcoinVaultAbi } from "../contracts/bitcoin-vault.js";
+import { bitcoinVaultAbi } from "../../contracts/bitcoin-vault.js";
 
 export function acknowledgedDeposits(
   client: Client,

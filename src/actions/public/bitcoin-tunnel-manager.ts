@@ -4,7 +4,7 @@ import { readContract } from "viem/actions";
 import {
   bitcoinTunnelManagerAbi,
   bitcoinTunnelManagerAddresses,
-} from "../contracts/bitcoin-tunnel-manager.js";
+} from "../../contracts/bitcoin-tunnel-manager.js";
 
 export function getVaultOwnerByBTCAddress(
   client: Client,

@@ -4,7 +4,7 @@ import { readContract } from "viem/actions";
 import {
   bitcoinKitTxsAbi,
   bitcoinKitTxAddresses,
-} from "../contracts/bitcoin-kit-txs.js";
+} from "../../contracts/bitcoin-kit-txs.js";
 
 export function getBitcoinAddressBalance(
   client: Client,
