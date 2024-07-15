@@ -2,7 +2,7 @@ import { type Address, type Chain } from "viem";
 import { hemiSepolia } from "../chains/hemi-sepolia.js";
 
 export const bitcoinKitTxAddresses: Record<Chain["id"], Address> = {
-  [hemiSepolia.id]: "0x181dBA19ce25bbD6d884347d2471FE5E5C0fcA4c",
+  [hemiSepolia.id]: "0xd65c1eb13e2f0740faae90593f8a38ca6036cf56",
 };
 
 export const bitcoinKitTxsAbi = [
