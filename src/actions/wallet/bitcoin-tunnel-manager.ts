@@ -21,3 +21,23 @@ export function confirmDeposit(
     functionName: "confirmDeposit",
   });
 }
+
+export function initiateWithdrawal(
+  client: Client,
+  parameters: {
+    amount: bigint;
+    btcAddress: string;
+    from: Address;
+    ownerAddress: Address;
+  },
+) {
+  const { amount, btcAddress, from, ownerAddress } = parameters;
+  return writeContract(client, {
+    abi: bitcoinTunnelManagerAbi,
+    account: from,
+    address: bitcoinTunnelManagerAddresses[client.chain!.id],
+    args: [btcAddress, amount, ownerAddress],
+    chain: client.chain!,
+    functionName: "initiateWithdrawal",
+  });
+}
