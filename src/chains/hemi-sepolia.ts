@@ -43,6 +43,11 @@ export const hemiSepolia = defineChain({
         address: "0xc94b1BEe63A3e101FE5F71C80F912b4F4b055925",
       },
     },
+    l2Bridge: {
+      [sourceId]: {
+        address: "0x4200000000000000000000000000000000000010",
+      },
+    },
     l2OutputOracle: {
       [sourceId]: {
         address: "0x032d1e1dd960A4B027a9a35FF8B2b672E333Bc27",
