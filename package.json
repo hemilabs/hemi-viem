@@ -40,6 +40,7 @@
   "peerDependencies": {
     "viem": "^2.x"
   },
+  "repository": "hemilabs/hemi-viem",
   "type": "module",
   "exports": {
     ".": {
