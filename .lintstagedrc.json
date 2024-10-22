@@ -1,0 +1,4 @@
+{
+  "!(package.json)": ["prettier --ignore-unknown --write"],
+  "package.json": ["better-sort-package-json", "prettier --write"]
+}
