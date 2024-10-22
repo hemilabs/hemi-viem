@@ -1,6 +1,7 @@
 import { type Client } from "viem";
 
 type Actions = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: (client: Client, parameters: any) => any;
 };
 
