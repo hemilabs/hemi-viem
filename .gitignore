@@ -1,5 +1,6 @@
+_esm
+_types
+.DS_Store
 .vscode
 node_modules
 tsconfig.tsbuildinfo
-_esm
-_types
