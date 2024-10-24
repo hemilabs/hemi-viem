@@ -2,10 +2,8 @@
   "extends": ["bloq", "prettier"],
   "overrides": [
     {
-      "extends": ["plugin:@typescript-eslint/recommended", "prettier"],
-      "files": ["*.ts"],
-      "parser": "@typescript-eslint/parser",
-      "plugins": ["@typescript-eslint"]
+      "extends": ["bloq/typescript", "prettier"],
+      "files": ["*.ts"]
     },
     {
       "extends": ["bloq/markdown"],

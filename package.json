@@ -35,8 +35,6 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
-    "@typescript-eslint/eslint-plugin": "^8.11.0",
-    "@typescript-eslint/parser": "^8.11.0",
     "better-sort-package-json": "^1.1.0",
     "commitlint-config-bloq": "^1.0.0",
     "eslint": "^8.57.1",
