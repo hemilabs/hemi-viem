@@ -1,0 +1,17 @@
+{
+  "extends": ["bloq", "prettier"],
+  "overrides": [
+    {
+      "extends": ["bloq/typescript", "prettier"],
+      "files": ["*.ts"]
+    },
+    {
+      "extends": ["bloq/markdown"],
+      "files": ["*.md"]
+    }
+  ],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "root": true
+}

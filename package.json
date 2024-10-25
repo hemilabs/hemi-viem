@@ -7,40 +7,47 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Gabriel Montes",
-    "email": "gabriel@bloq.com"
+    "email": "gabriel@bloq.com",
+    "name": "Gabriel Montes"
   },
   "contributors": [
     {
-      "name": "Gonzalo D'Elia",
-      "email": "gonzalo@bloq.com"
+      "email": "gonzalo@bloq.com",
+      "name": "Gonzalo D'Elia"
     }
   ],
   "files": [
-    "_esm/**/*",
-    "_types/**/*",
+    "_esm",
+    "_types",
     "src/**/*.ts"
   ],
   "main": "./_esm/index.js",
+  "repository": "hemilabs/hemi-viem",
   "scripts": {
     "build": "npm run clean && npm run build:esm && npm run build:types",
     "build:esm": "tsc --noEmit false --outDir ./_esm --sourceMap",
     "build:types": "tsc --module esnext --declarationDir ./_types --emitDeclarationOnly --declaration --declarationMap",
     "clean": "rm -rf ./_esm ./_types",
+    "deps:check": "knip",
     "format:check": "prettier --check .",
     "prepublishOnly": "npm run build",
     "tsc": "tsc --noEmit"
   },
   "devDependencies": {
-    "husky": "4.3.8",
-    "lint-staged": "15.2.7",
-    "prettier": "3.3.2",
-    "typescript": "5.5.3"
+    "@commitlint/cli": "^19.5.0",
+    "better-sort-package-json": "^1.1.0",
+    "commitlint-config-bloq": "^1.0.0",
+    "eslint": "^8.57.1",
+    "eslint-config-bloq": "^4.2.0",
+    "husky": "^4.3.8",
+    "knip": "^5.34.0",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.3"
   },
   "peerDependencies": {
     "viem": "^2.x"
   },
-  "repository": "hemilabs/hemi-viem",
   "type": "module",
   "exports": {
     ".": {
@@ -48,18 +55,7 @@
       "types": "./_types/index.d.ts"
     }
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,json,md,ts,}": "prettier --write"
-  },
   "module": "./_esm/index.js",
-  "prettier": {
-    "quoteProps": "consistent"
-  },
   "types": "./_types/index.d.ts",
   "typings": "./_types/index.d.ts"
 }

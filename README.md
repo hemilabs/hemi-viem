@@ -1,5 +1,7 @@
 # Hemi Viem
 
+![NPM Version](https://img.shields.io/npm/v/hemi-viem)
+
 [Viem](https://viem.sh/) extension for the [Hemi Network](https://hemi.xyz/).
 It includes:
 
