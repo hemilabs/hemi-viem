@@ -9,7 +9,7 @@ export const hemi = defineChain({
   name: "Hemi Network",
   nativeCurrency: {
     decimals: 18,
-    name: "Hemi Ether",
+    name: "Ether",
     symbol: "ETH",
   },
   rpcUrls: {
