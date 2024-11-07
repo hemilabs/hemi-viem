@@ -9,16 +9,13 @@ type DecoratedActions<T extends Actions> = {
   [K in keyof T]: (properties: Parameters<T[K]>[1]) => ReturnType<T[K]>;
 };
 
-export const actionsToDecorator = function <TActions extends Actions>(
-  actions: TActions,
-) {
-  return function (client: Client) {
-    return Object.fromEntries(
+export const actionsToDecorator =
+  <TActions extends Actions>(actions: TActions) =>
+  (client: Client) =>
+    Object.fromEntries(
       Object.keys(actions).map((action) => [
         action,
         (properties: Parameters<TActions[typeof action]>[1]) =>
           actions[action](client, properties),
       ]),
     ) as DecoratedActions<TActions>;
-  };
-};

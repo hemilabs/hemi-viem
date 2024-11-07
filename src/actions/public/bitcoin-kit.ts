@@ -12,31 +12,30 @@ export function getBitcoinAddressBalance(
 ) {
   const { btcAddress } = parameters;
   return readContract(client, {
-    address: bitcoinKitTxAddresses[client.chain!.id],
     abi: bitcoinKitTxsAbi,
-    functionName: "getBitcoinAddressBalance",
+    address: bitcoinKitTxAddresses[client.chain!.id],
     args: [btcAddress],
+    functionName: "getBitcoinAddressBalance",
   });
 }
 
 export function getHeaderN(client: Client, parameters: { height: number }) {
   const { height } = parameters;
   return readContract(client, {
-    address: bitcoinKitTxAddresses[client.chain!.id],
     abi: bitcoinKitTxsAbi,
-    functionName: "getHeaderN",
+    address: bitcoinKitTxAddresses[client.chain!.id],
     args: [height],
+    functionName: "getHeaderN",
   });
 }
 
-export function getLastHeader(client: Client) {
-  return readContract(client, {
-    address: bitcoinKitTxAddresses[client.chain!.id],
+export const getLastHeader = (client: Client) =>
+  readContract(client, {
     abi: bitcoinKitTxsAbi,
-    functionName: "getLastHeader",
+    address: bitcoinKitTxAddresses[client.chain!.id],
     args: [],
+    functionName: "getLastHeader",
   });
-}
 
 export function getTransactionByTxId(
   client: Client,
@@ -45,20 +44,20 @@ export function getTransactionByTxId(
   const { txId } = parameters;
   const hash: Hash = isHash(txId) ? txId : `0x${txId}`;
   return readContract(client, {
-    address: bitcoinKitTxAddresses[client.chain!.id],
     abi: bitcoinKitTxsAbi,
-    functionName: "getTransactionByTxId",
+    address: bitcoinKitTxAddresses[client.chain!.id],
     args: [hash],
+    functionName: "getTransactionByTxId",
   });
 }
 
 export function getTxConfirmations(client: Client, parameters: { txId: Hash }) {
   const { txId } = parameters;
   return readContract(client, {
-    address: bitcoinKitTxAddresses[client.chain!.id],
     abi: bitcoinKitTxsAbi,
-    functionName: "getTxConfirmations",
+    address: bitcoinKitTxAddresses[client.chain!.id],
     args: [txId],
+    functionName: "getTxConfirmations",
   });
 }
 
@@ -68,9 +67,9 @@ export function getUtxosForBitcoinAddress(
 ) {
   const { btcAddress, pageNumber, pageSize } = parameters;
   return readContract(client, {
-    address: bitcoinKitTxAddresses[client.chain!.id],
     abi: bitcoinKitTxsAbi,
-    functionName: "getUTXOsForBitcoinAddress",
+    address: bitcoinKitTxAddresses[client.chain!.id],
     args: [btcAddress, pageNumber, pageSize],
+    functionName: "getUTXOsForBitcoinAddress",
   });
 }

@@ -25,8 +25,8 @@ export function getVaultAddressByOwner(
 ) {
   const { ownerAddress } = parameters;
   return readContract(client, {
-    address: bitcoinTunnelManagerAddresses[client.chain!.id],
     abi: bitcoinTunnelManagerAbi,
+    address: bitcoinTunnelManagerAddresses[client.chain!.id],
     args: [ownerAddress],
     functionName: "getVaultAddressByOwner",
   });
