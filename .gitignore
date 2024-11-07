@@ -1,6 +1,7 @@
 _esm
 _types
 .DS_Store
+.eslintcache
 .vscode
 node_modules
 tsconfig.tsbuildinfo
