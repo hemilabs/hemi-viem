@@ -10,10 +10,10 @@ export function acknowledgedDeposits(
   const { txId, vaultAddress } = parameters;
   const hash: Hash = isHash(txId) ? txId : `0x${txId}`;
   return readContract(client, {
-    address: vaultAddress,
     abi: bitcoinVaultAbi,
-    functionName: "acknowledgedDeposits",
+    address: vaultAddress,
     args: [hash],
+    functionName: "acknowledgedDeposits",
   });
 }
 
@@ -23,9 +23,9 @@ export function getBitcoinCustodyAddress(
 ) {
   const { vaultAddress } = parameters;
   return readContract(client, {
-    address: vaultAddress,
     abi: bitcoinVaultAbi,
-    functionName: "getBitcoinCustodyAddress",
+    address: vaultAddress,
     args: [],
+    functionName: "getBitcoinCustodyAddress",
   });
 }

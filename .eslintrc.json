@@ -1,9 +1,18 @@
 {
   "extends": ["bloq", "prettier"],
+  "ignorePatterns": ["_esm/*", "_types/*"],
   "overrides": [
     {
       "extends": ["bloq/typescript", "prettier"],
-      "files": ["*.ts"]
+      "files": ["src/**/*.ts"],
+      "rules": {
+        "camelcase": [
+          "off",
+          {
+            "allow": ["btc_", "l2_"]
+          }
+        ]
+      }
     },
     {
       "extends": ["bloq/markdown"],

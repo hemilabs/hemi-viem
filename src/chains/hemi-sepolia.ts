@@ -5,22 +5,6 @@ const sourceId = 11_155_111; // Sepolia
 
 export const hemiSepolia = defineChain({
   ...chainConfig,
-  id: 743_111,
-  name: "Hemi Sepolia",
-  nativeCurrency: {
-    decimals: 18,
-    name: "Ether",
-    symbol: "ETH",
-  },
-  rpcUrls: {
-    default: {
-      http: ["https://testnet.rpc.hemi.network/rpc"],
-      webSocket: ["wss://testnet.rpc.hemi.network/wsrpc"],
-    },
-    opNode: {
-      http: ["https://testnet.rpc.hemi.network/noderpc"],
-    },
-  },
   blockExplorers: {
     default: {
       name: "Hemi Sepolia Explorer",
@@ -63,6 +47,22 @@ export const hemiSepolia = defineChain({
       },
     },
   },
-  testnet: true,
+  id: 743_111,
+  name: "Hemi Sepolia",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Ether",
+    symbol: "ETH",
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://testnet.rpc.hemi.network/rpc"],
+      webSocket: ["wss://testnet.rpc.hemi.network/wsrpc"],
+    },
+    opNode: {
+      http: ["https://testnet.rpc.hemi.network/noderpc"],
+    },
+  },
   sourceId,
+  testnet: true,
 });

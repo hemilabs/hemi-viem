@@ -5,22 +5,6 @@ const sourceId = 1; // Ethereum mainnet
 
 export const hemi = defineChain({
   ...chainConfig,
-  id: 43_111,
-  name: "Hemi Network",
-  nativeCurrency: {
-    decimals: 18,
-    name: "Ether",
-    symbol: "ETH",
-  },
-  rpcUrls: {
-    default: {
-      http: ["https://rpc.hemi.network/rpc"],
-      webSocket: ["wss://rpc.hemi.network/wsrpc"],
-    },
-    opNode: {
-      http: ["https://rpc.hemi.network/noderpc"],
-    },
-  },
   blockExplorers: {
     default: {
       name: "Hemi Network Explorer",
@@ -61,6 +45,22 @@ export const hemi = defineChain({
       [sourceId]: {
         address: "0x39a0005415256B9863aFE2d55Edcf75ECc3A4D7e",
       },
+    },
+  },
+  id: 43_111,
+  name: "Hemi Network",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Ether",
+    symbol: "ETH",
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://rpc.hemi.network/rpc"],
+      webSocket: ["wss://rpc.hemi.network/wsrpc"],
+    },
+    opNode: {
+      http: ["https://rpc.hemi.network/noderpc"],
     },
   },
   sourceId,

@@ -21,10 +21,10 @@ export async function getBtcFinalityByBlockHash(
       throw err;
     }
     return {
-      l2_keystone: null,
-      btc_pub_height: -1,
-      btc_pub_header_hash: "",
       btc_finality: -9,
+      btc_pub_header_hash: "",
+      btc_pub_height: -1,
+      l2_keystone: null,
     };
   }
 }

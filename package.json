@@ -30,6 +30,7 @@
     "clean": "rm -rf ./_esm ./_types",
     "deps:check": "knip",
     "format:check": "prettier --check .",
+    "lint": "eslint --cache .",
     "prepublishOnly": "npm run build",
     "tsc": "tsc --noEmit"
   },
