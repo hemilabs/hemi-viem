@@ -1,10 +1,3 @@
-import { type Address, type Chain } from "viem";
-import { hemiSepolia } from "../chains/hemi-sepolia.js";
-
-export const bitcoinKitTxAddresses: Record<Chain["id"], Address> = {
-  [hemiSepolia.id]: "0x181dBA19ce25bbD6d884347d2471FE5E5C0fcA4c",
-};
-
 export const bitcoinKitTxsAbi = [
   {
     inputs: [

@@ -10,90 +10,69 @@ export const bitcoinTunnelManagerAbi = [
     inputs: [
       {
         internalType: "address",
-        name: "_bitcoinKitAddress",
+        name: "initialAdmin",
         type: "address",
-      },
-      {
-        internalType: "address",
-        name: "_permittedCollateralToken",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "_collateralTokenBTCPriceOracle",
-        type: "address",
-      },
-      {
-        internalType: "uint32",
-        name: "_initialOpeningCollateralRatio",
-        type: "uint32",
-      },
-      {
-        internalType: "uint32",
-        name: "_liquidationCollateralRatio",
-        type: "uint32",
       },
       {
         internalType: "uint256",
-        name: "_minimumCollateralDepositAmount",
+        name: "initialVaultFactoryUpgradeDelay",
         type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "minimumVaultFactoryUpgradeDelay",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "initialBitcoinKitUpgradeDelay",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "initialGlobalConfigAdminUpgradeDelay",
+        type: "uint256",
+      },
+      {
+        internalType: "contract IBitcoinKit",
+        name: "bitcoinKitAddr",
+        type: "address",
       },
     ],
     stateMutability: "nonpayable",
     type: "constructor",
   },
   {
-    inputs: [],
-    name: "GenericWithdrawalFailed",
-    type: "error",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "operator",
-        type: "address",
-      },
-    ],
-    name: "OperatorAlreadyCreatedVault",
-    type: "error",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "VaultInsufficientBalanceForWithdrawal",
-    type: "error",
-  },
-  {
     anonymous: false,
     inputs: [
       {
         indexed: true,
+        internalType: "address",
+        name: "vault",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "recipient",
+        type: "address",
+      },
+      {
+        indexed: true,
         internalType: "bytes32",
-        name: "btcTxid",
+        name: "depositTxId",
         type: "bytes32",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "depositer",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "vaultAddress",
-        type: "address",
       },
       {
         indexed: false,
         internalType: "uint256",
-        name: "amount",
+        name: "depositSats",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "netSatsAfterFee",
         type: "uint256",
       },
     ],
@@ -106,26 +85,13 @@ export const bitcoinTunnelManagerAbi = [
       {
         indexed: true,
         internalType: "address",
-        name: "operator",
+        name: "setupAdmin",
         type: "address",
       },
       {
         indexed: true,
         internalType: "address",
-        name: "vaultAddress",
-        type: "address",
-      },
-    ],
-    name: "VaultActivated",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "operator",
+        name: "operatorAdmin",
         type: "address",
       },
       {
@@ -144,28 +110,9 @@ export const bitcoinTunnelManagerAbi = [
       {
         indexed: true,
         internalType: "address",
-        name: "vaultAddress",
+        name: "vault",
         type: "address",
       },
-      {
-        indexed: true,
-        internalType: "uint32",
-        name: "withdrawalCounter",
-        type: "uint32",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amountAfterFees",
-        type: "uint256",
-      },
-    ],
-    name: "WithdrawalFinalized",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
       {
         indexed: true,
         internalType: "address",
@@ -174,18 +121,31 @@ export const bitcoinTunnelManagerAbi = [
       },
       {
         indexed: true,
+        internalType: "uint64",
+        name: "uuid",
+        type: "uint64",
+      },
+    ],
+    name: "WithdrawalChallengeSuccess",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
         internalType: "address",
-        name: "vaultAddress",
+        name: "vault",
         type: "address",
       },
       {
         indexed: true,
-        internalType: "uint32",
-        name: "withdrawalCounter",
-        type: "uint32",
+        internalType: "address",
+        name: "withdrawer",
+        type: "address",
       },
       {
-        indexed: false,
+        indexed: true,
         internalType: "string",
         name: "btcAddress",
         type: "string",
@@ -193,57 +153,24 @@ export const bitcoinTunnelManagerAbi = [
       {
         indexed: false,
         internalType: "uint256",
-        name: "amount",
+        name: "withdrawalSats",
         type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "netSatsAfterFee",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint64",
+        name: "uuid",
+        type: "uint64",
       },
     ],
     name: "WithdrawalInitiated",
     type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    name: "allOwners",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "allOwnersSize",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "bitcoinKitContract",
-    outputs: [
-      {
-        internalType: "contract IBitcoinKit",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
   },
   {
     inputs: [],
@@ -259,51 +186,14 @@ export const bitcoinTunnelManagerAbi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "collateralBTCPriceOracle",
-    outputs: [
-      {
-        internalType: "contract IAssetPriceOracle",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [
       {
-        internalType: "bytes32",
-        name: "_txid",
-        type: "bytes32",
-      },
-      {
-        internalType: "address",
-        name: "vaultOwner",
-        type: "address",
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
       },
     ],
-    name: "confirmDeposit",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "string",
-        name: "btcAddress",
-        type: "string",
-      },
-    ],
-    name: "createVault",
+    name: "burnLiquidatedBTC",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -311,22 +201,17 @@ export const bitcoinTunnelManagerAbi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "vaultOperator",
-        type: "address",
+        internalType: "uint64",
+        name: "uuid",
+        type: "uint64",
       },
       {
-        internalType: "uint32",
-        name: "withdrawalIndex",
-        type: "uint32",
-      },
-      {
-        internalType: "bytes32",
-        name: "_txid",
-        type: "bytes32",
+        internalType: "bytes",
+        name: "extraInfo",
+        type: "bytes",
       },
     ],
-    name: "finalizeWithdrawal",
+    name: "challengeWithdrawal",
     outputs: [
       {
         internalType: "bool",
@@ -340,17 +225,73 @@ export const bitcoinTunnelManagerAbi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "owner",
-        type: "address",
+        internalType: "uint32",
+        name: "vaultIndex",
+        type: "uint32",
+      },
+      {
+        internalType: "bytes32",
+        name: "txid",
+        type: "bytes32",
+      },
+      {
+        internalType: "uint256",
+        name: "outputIndex",
+        type: "uint256",
+      },
+      {
+        internalType: "bytes",
+        name: "extraInfo",
+        type: "bytes",
       },
     ],
-    name: "getBtcAddressOfVaultByOwner",
+    name: "confirmDeposit",
     outputs: [
       {
-        internalType: "string",
-        name: "btcAddress",
-        type: "string",
+        internalType: "bool",
+        name: "successful",
+        type: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "setupAdmin",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "operatorAdmin",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "vaultType",
+        type: "uint256",
+      },
+      {
+        internalType: "bytes",
+        name: "extraInfo",
+        type: "bytes",
+      },
+    ],
+    name: "createVault",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "globalConfig",
+    outputs: [
+      {
+        internalType: "contract GlobalConfig",
+        name: "",
+        type: "address",
       },
     ],
     stateMutability: "view",
@@ -359,43 +300,10 @@ export const bitcoinTunnelManagerAbi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "owner",
-        type: "address",
+        internalType: "uint32",
+        name: "vaultIndex",
+        type: "uint32",
       },
-    ],
-    name: "getVaultAddressByOwner",
-    outputs: [
-      {
-        internalType: "address",
-        name: "vaultAddress",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "string",
-        name: "btcAddress",
-        type: "string",
-      },
-    ],
-    name: "getVaultOwnerByBTCAddress",
-    outputs: [
-      {
-        internalType: "address",
-        name: "owner",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
       {
         internalType: "string",
         name: "btcAddress",
@@ -406,18 +314,18 @@ export const bitcoinTunnelManagerAbi = [
         name: "amount",
         type: "uint256",
       },
-      {
-        internalType: "address",
-        name: "vaultOperator",
-        type: "address",
-      },
     ],
     name: "initiateWithdrawal",
     outputs: [
       {
-        internalType: "bool",
-        name: "",
-        type: "bool",
+        internalType: "uint256",
+        name: "feeSats",
+        type: "uint256",
+      },
+      {
+        internalType: "uint64",
+        name: "uuid",
+        type: "uint64",
       },
     ],
     stateMutability: "nonpayable",
@@ -426,15 +334,33 @@ export const bitcoinTunnelManagerAbi = [
   {
     inputs: [
       {
-        internalType: "bytes32",
-        name: "",
-        type: "bytes32",
+        internalType: "uint32",
+        name: "vaultIndex",
+        type: "uint32",
+      },
+      {
+        internalType: "uint256",
+        name: "amountToMint",
+        type: "uint256",
       },
     ],
-    name: "ownerByBTCAddressHash",
+    name: "mintOperatorFees",
     outputs: [
       {
-        internalType: "address",
+        internalType: "uint256",
+        name: "amountMinted",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "originalBitcoinKitContract",
+    outputs: [
+      {
+        internalType: "contract IBitcoinKit",
         name: "",
         type: "address",
       },
@@ -443,13 +369,41 @@ export const bitcoinTunnelManagerAbi = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "uint32",
+        name: "vaultIndex",
+        type: "uint32",
+      },
+      {
+        internalType: "bytes32",
+        name: "txid",
+        type: "bytes32",
+      },
+      {
+        internalType: "uint256",
+        name: "outputIndex",
+        type: "uint256",
+      },
+      {
+        internalType: "bytes",
+        name: "extraInfo",
+        type: "bytes",
+      },
+    ],
+    name: "preconfirmDeposit",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [],
-    name: "permittedCollateralToken",
+    name: "vaultCounter",
     outputs: [
       {
-        internalType: "contract ERC20",
+        internalType: "uint32",
         name: "",
-        type: "address",
+        type: "uint32",
       },
     ],
     stateMutability: "view",
@@ -463,10 +417,29 @@ export const bitcoinTunnelManagerAbi = [
         type: "address",
       },
     ],
-    name: "vaultsByOwner",
+    name: "vaultList",
     outputs: [
       {
-        internalType: "contract BitcoinVault",
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint32",
+        name: "",
+        type: "uint32",
+      },
+    ],
+    name: "vaults",
+    outputs: [
+      {
+        internalType: "contract IBitcoinVault",
         name: "",
         type: "address",
       },

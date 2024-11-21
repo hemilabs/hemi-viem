@@ -8,16 +8,22 @@ import {
 
 export function confirmDeposit(
   client: Client,
-  parameters: { from: Address; txId: string; ownerAddress: Address },
+  parameters: {
+    extraInfo: Hash;
+    from: Address;
+    outputIndex: bigint;
+    txId: string;
+    vaultIndex: number;
+  },
 ) {
-  const { from, txId, ownerAddress } = parameters;
+  const { extraInfo, from, outputIndex, txId, vaultIndex } = parameters;
   const hash: Hash = isHash(txId) ? txId : `0x${txId}`;
   return writeContract(client, {
     abi: bitcoinTunnelManagerAbi,
     account: from,
     address: bitcoinTunnelManagerAddresses[client.chain!.id],
-    args: [hash, ownerAddress],
-    chain: client.chain!,
+    args: [vaultIndex, hash, outputIndex, extraInfo],
+    chain: client.chain,
     functionName: "confirmDeposit",
   });
 }
@@ -28,16 +34,16 @@ export function initiateWithdrawal(
     amount: bigint;
     btcAddress: string;
     from: Address;
-    ownerAddress: Address;
+    vaultIndex: number;
   },
 ) {
-  const { amount, btcAddress, from, ownerAddress } = parameters;
+  const { amount, btcAddress, from, vaultIndex } = parameters;
   return writeContract(client, {
     abi: bitcoinTunnelManagerAbi,
     account: from,
     address: bitcoinTunnelManagerAddresses[client.chain!.id],
-    args: [btcAddress, amount, ownerAddress],
-    chain: client.chain!,
+    args: [vaultIndex, btcAddress, amount],
+    chain: client.chain,
     functionName: "initiateWithdrawal",
   });
 }
