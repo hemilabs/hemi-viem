@@ -47,3 +47,22 @@ export function initiateWithdrawal(
     functionName: "initiateWithdrawal",
   });
 }
+
+export function challengeWithdrawal(
+  client: Client,
+  parameters: {
+    extraInfo?: Hash;
+    from: Address;
+    uuid: bigint;
+  },
+) {
+  const { extraInfo, from, uuid } = parameters;
+  return writeContract(client, {
+    abi: bitcoinTunnelManagerAbi,
+    account: from,
+    address: bitcoinTunnelManagerAddresses[client.chain!.id],
+    args: [uuid, extraInfo ?? "0x"],
+    chain: client.chain,
+    functionName: "challengeWithdrawal",
+  });
+}
