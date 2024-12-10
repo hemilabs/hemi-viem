@@ -1,6 +1,6 @@
 {
   "name": "hemi-viem",
-  "version": "2.0.0-alpha.9",
+  "version": "2.0.0-alpha.10",
   "description": "Viem extension for the Hemi Network",
   "bugs": {
     "url": "https://github.com/hemilabs/hemi-viem/issues"
@@ -52,13 +52,13 @@
   },
   "type": "module",
   "exports": {
-    "./contracts": {
-      "import": "./_esm/contracts/index.js",
-      "types": "./_types/contracts/index.d.ts"
-    },
     ".": {
       "import": "./_esm/index.js",
       "types": "./_types/index.d.ts"
+    },
+    "./contracts": {
+      "import": "./_esm/contracts/index.js",
+      "types": "./_types/contracts/index.d.ts"
     }
   },
   "module": "./_esm/index.js",
