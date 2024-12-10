@@ -17,7 +17,7 @@
     }
   ],
   "files": [
-    "_esm/*",
+    "_esm",
     "_types",
     "src/**/*.ts"
   ],
@@ -55,6 +55,10 @@
     ".": {
       "import": "./_esm/index.js",
       "types": "./_types/index.d.ts"
+    },
+    "./contracts/*": {
+      "import": "./_esm/*.js",
+      "types": "./_types/*.d.ts"
     }
   },
   "module": "./_esm/index.js",
