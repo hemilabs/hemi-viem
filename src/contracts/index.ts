@@ -1,4 +1,4 @@
-export { bitcoinKitTxsAbi } from "./bitcoin-kit-txs";
-export { bitcoinTunnelManagerAbi } from "./bitcoin-tunnel-manager";
-export { simpleBitcoinVaultStateAbi } from "./simple-bitcoin-vault-state";
-export { simpleBitcoinVaultAbi } from "./simple-bitcoin-vault";
+export { bitcoinKitTxsAbi } from "./bitcoin-kit-txs.js";
+export { bitcoinTunnelManagerAbi } from "./bitcoin-tunnel-manager.js";
+export { simpleBitcoinVaultStateAbi } from "./simple-bitcoin-vault-state.js";
+export { simpleBitcoinVaultAbi } from "./simple-bitcoin-vault.js";
