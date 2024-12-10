@@ -17,7 +17,7 @@
     }
   ],
   "files": [
-    "_esm",
+    "_esm/*",
     "_types",
     "src/**/*.ts"
   ],

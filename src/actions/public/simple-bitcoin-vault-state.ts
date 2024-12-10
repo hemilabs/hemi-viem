@@ -16,3 +16,17 @@ export function acknowledgedDeposits(
     functionName: "acknowledgedDeposits",
   });
 }
+
+export function getBitcoinWithdrawalBitcoinTxId(
+  client: Client,
+  parameters: { uuid: bigint; vaultStateAddress: Address },
+) {
+  const { uuid, vaultStateAddress } = parameters;
+  return readContract(client, {
+    abi: simpleBitcoinVaultStateAbi,
+    address: vaultStateAddress,
+    // The withdrawalsToStatus receive just the lower 32 bits of the uuid
+    args: [Number(uuid & BigInt(0xffffffff))],
+    functionName: "withdrawalsToStatus",
+  });
+}

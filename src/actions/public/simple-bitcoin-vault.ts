@@ -29,6 +29,18 @@ export function getBitcoinVaultStateAddress(
   });
 }
 
+export function getBitcoinWithdrawalGracePeriod(
+  client: Client,
+  parameters: { vaultAddress: Address },
+) {
+  const { vaultAddress } = parameters;
+  return readContract(client, {
+    abi: simpleBitcoinVaultAbi,
+    address: vaultAddress,
+    functionName: "WITHDRAWAL_GRACE_PERIOD_SECONDS",
+  });
+}
+
 export function getVaultStatus(
   client: Client,
   parameters: { vaultAddress: Address },
