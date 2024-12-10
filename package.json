@@ -52,13 +52,13 @@
   },
   "type": "module",
   "exports": {
-    "./contracts/*": {
-      "import": "./_esm/contracts/*.js",
-      "types": "./_types/contracts/*.d.ts"
-    },
     ".": {
       "import": "./_esm/index.js",
       "types": "./_types/index.d.ts"
+    },
+    "./contracts/*": {
+      "import": "./_esm/contracts/*.js",
+      "types": "./_types/contracts/*.d.ts"
     }
   },
   "module": "./_esm/index.js",
