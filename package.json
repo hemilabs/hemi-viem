@@ -63,5 +63,12 @@
   },
   "module": "./_esm/index.js",
   "types": "./_types/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "contracts": [
+        "_types/contracts/index.d.ts"
+      ]
+    }
+  },
   "typings": "./_types/index.d.ts"
 }
