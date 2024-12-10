@@ -56,9 +56,9 @@
       "import": "./_esm/index.js",
       "types": "./_types/index.d.ts"
     },
-    "./contracts/*": {
-      "import": "./_esm/contracts/*.js",
-      "types": "./_types/contracts/*.d.ts"
+    "./contracts": {
+      "import": "./_esm/contracts/index.js",
+      "types": "./_types/contracts/index.d.ts"
     }
   },
   "module": "./_esm/index.js",
