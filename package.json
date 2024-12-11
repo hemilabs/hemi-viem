@@ -1,6 +1,6 @@
 {
   "name": "hemi-viem",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "description": "Viem extension for the Hemi Network",
   "bugs": {
     "url": "https://github.com/hemilabs/hemi-viem/issues"
@@ -17,6 +17,7 @@
     }
   ],
   "files": [
+    "_cjs",
     "_esm",
     "_types",
     "src/**/*.ts"
@@ -24,10 +25,11 @@
   "main": "./_esm/index.js",
   "repository": "hemilabs/hemi-viem",
   "scripts": {
-    "build": "npm run clean && npm run build:esm && npm run build:types",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:types",
+    "build:cjs": "tsc --noEmit false --module CommonJS --outDir ./_cjs --sourceMap && echo '{\"type\":\"commonjs\"}' > ./_cjs/package.json",
     "build:esm": "tsc --noEmit false --outDir ./_esm --sourceMap",
     "build:types": "tsc --module esnext --declarationDir ./_types --emitDeclarationOnly --declaration --declarationMap",
-    "clean": "rm -rf ./_esm ./_types",
+    "clean": "rm -rf ./_esm ./_cjs ./_types",
     "deps:check": "knip",
     "format:check": "prettier --check .",
     "lint": "eslint --cache .",
@@ -53,6 +55,7 @@
   "exports": {
     ".": {
       "import": "./_esm/index.js",
+      "require": "./_cjs/index.js",
       "types": "./_types/index.d.ts"
     }
   },

@@ -1,6 +1,6 @@
 {
   "extends": ["bloq", "prettier"],
-  "ignorePatterns": ["_esm/*", "_types/*"],
+  "ignorePatterns": ["_esm/*", "_cjs/*", "_types/*"],
   "overrides": [
     {
       "extends": ["bloq/typescript", "prettier"],
