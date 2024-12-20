@@ -1,4 +1,4 @@
 {
   "ignore": [".eslintrc.json"],
-  "ignoreDependencies": ["@commitlint/cli", "husky", "lint-staged"]
+  "ignoreDependencies": ["husky", "lint-staged"]
 }
