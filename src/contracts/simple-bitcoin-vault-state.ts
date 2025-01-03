@@ -26,10 +26,15 @@ export const simpleBitcoinVaultStateAbi = [
     type: "constructor",
   },
   {
+    inputs: [],
+    name: "ReentrancyGuardReentrantCall",
+    type: "error",
+  },
+  {
     anonymous: false,
     inputs: [
       {
-        indexed: true,
+        indexed: false,
         internalType: "uint256",
         name: "newDepositFeeBps",
         type: "uint256",
@@ -43,6 +48,56 @@ export const simpleBitcoinVaultStateAbi = [
     inputs: [
       {
         indexed: true,
+        internalType: "address",
+        name: "buyer",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "satsLiquidated",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "collateralSold",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "pricePerBTC",
+        type: "uint256",
+      },
+    ],
+    name: "FullLiquidationCollateralPurchased",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "satsToRepurchase",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "startingPricePerBTC",
+        type: "uint256",
+      },
+    ],
+    name: "FullLiquidationStarted",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
         internalType: "uint256",
         name: "newMinDepositFeeSats",
         type: "uint256",
@@ -55,7 +110,7 @@ export const simpleBitcoinVaultStateAbi = [
     anonymous: false,
     inputs: [
       {
-        indexed: true,
+        indexed: false,
         internalType: "uint256",
         name: "newMinWithdrawalFeeSats",
         type: "uint256",
@@ -69,13 +124,152 @@ export const simpleBitcoinVaultStateAbi = [
     inputs: [
       {
         indexed: true,
+        internalType: "address",
+        name: "bidder",
+        type: "address",
+      },
+      {
+        indexed: false,
         internalType: "uint256",
-        name: "newWIthdrawalFeeBps",
+        name: "satsToRepurchase",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "newBid",
+        type: "uint256",
+      },
+    ],
+    name: "PartialLiquidationBid",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "auctionWinner",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "satsRepurchased",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "finalBid",
+        type: "uint256",
+      },
+    ],
+    name: "PartialLiquidationFinalized",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "satsToRepurchase",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "startingBid",
+        type: "uint256",
+      },
+    ],
+    name: "PartialLiquidationStarted",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "previousThreshold",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "newThreshold",
+        type: "uint256",
+      },
+    ],
+    name: "SoftCollateralizationThresholdDecreased",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "previousThreshold",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "newThreshold",
+        type: "uint256",
+      },
+    ],
+    name: "SoftCollateralizationThresholdIncreaseFinalized",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "currentThreshold",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "newThreshold",
+        type: "uint256",
+      },
+    ],
+    name: "SoftCollateralizationThresholdIncreaseInit",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "newWithdrawalFeeBps",
         type: "uint256",
       },
     ],
     name: "WithdrawalFeeBpsUpdated",
     type: "event",
+  },
+  {
+    inputs: [],
+    name: "BPS_DIVISOR",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
   },
   {
     inputs: [],
@@ -131,7 +325,7 @@ export const simpleBitcoinVaultStateAbi = [
   },
   {
     inputs: [],
-    name: "MAX_WITHDRAWAL_QUEUE_SIZE",
+    name: "MAX_WITHDRAWAL_ARRAY_SIZE",
     outputs: [
       {
         internalType: "uint256",
@@ -158,6 +352,19 @@ export const simpleBitcoinVaultStateAbi = [
   {
     inputs: [],
     name: "PARTIAL_LIQUIDATION_BID_TIME",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "SATS_PER_BTC",
     outputs: [
       {
         internalType: "uint256",
@@ -519,19 +726,6 @@ export const simpleBitcoinVaultStateAbi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "decreaseTotalDepositsHeldFromOperatorBurning",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "depositFeeBps",
     outputs: [
@@ -539,6 +733,25 @@ export const simpleBitcoinVaultStateAbi = [
         internalType: "uint256",
         name: "",
         type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "depositAmount",
+        type: "uint256",
+      },
+    ],
+    name: "doesDepositExceedSoftCollateralThreshold",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "exceedsCollateral",
+        type: "bool",
       },
     ],
     stateMutability: "view",
@@ -659,6 +872,19 @@ export const simpleBitcoinVaultStateAbi = [
   },
   {
     inputs: [],
+    name: "getFullLiquidationOperatorReserves",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "getOperatorCollateralDeposited",
     outputs: [
       {
@@ -676,7 +902,7 @@ export const simpleBitcoinVaultStateAbi = [
     outputs: [
       {
         internalType: "contract SimpleBitcoinVault",
-        name: "_parentVault",
+        name: "",
         type: "address",
       },
     ],
@@ -737,7 +963,7 @@ export const simpleBitcoinVaultStateAbi = [
   },
   {
     inputs: [],
-    name: "getUtilizedCollateral",
+    name: "getUtilizedCollateralSoft",
     outputs: [
       {
         internalType: "uint256",
@@ -966,6 +1192,25 @@ export const simpleBitcoinVaultStateAbi = [
       {
         internalType: "bool",
         name: "isAcknowledgedWithdrawalFulfillment",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint32",
+        name: "uuid",
+        type: "uint32",
+      },
+    ],
+    name: "isWithdrawalAlreadyChallenged",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "isChallenged",
         type: "bool",
       },
     ],
@@ -1281,6 +1526,26 @@ export const simpleBitcoinVaultStateAbi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "saveFullLiquidationOperatorReservesReminted",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint32",
+        name: "uuid",
+        type: "uint32",
+      },
+    ],
+    name: "saveSuccessfulWithdrawalChallenge",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "uint32",
@@ -1414,6 +1679,25 @@ export const simpleBitcoinVaultStateAbi = [
         internalType: "address",
         name: "evmOriginator",
         type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint32",
+        name: "",
+        type: "uint32",
+      },
+    ],
+    name: "withdrawalsChallenged",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
       },
     ],
     stateMutability: "view",

@@ -36,16 +36,21 @@ export const simpleBitcoinVaultAbi = [
     type: "constructor",
   },
   {
+    inputs: [],
+    name: "ReentrancyGuardReentrantCall",
+    type: "error",
+  },
+  {
     anonymous: false,
     inputs: [
       {
-        indexed: true,
+        indexed: false,
         internalType: "uint256",
         name: "amountDeposited",
         type: "uint256",
       },
       {
-        indexed: true,
+        indexed: false,
         internalType: "uint256",
         name: "totalCollateral",
         type: "uint256",
@@ -58,13 +63,13 @@ export const simpleBitcoinVaultAbi = [
     anonymous: false,
     inputs: [
       {
-        indexed: true,
+        indexed: false,
         internalType: "uint256",
         name: "amountWithdrawn",
         type: "uint256",
       },
       {
-        indexed: true,
+        indexed: false,
         internalType: "uint256",
         name: "totalCollateral",
         type: "uint256",
@@ -75,40 +80,26 @@ export const simpleBitcoinVaultAbi = [
   },
   {
     anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "satsToRepurchase",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "startingPrice",
-        type: "uint256",
-      },
-    ],
-    name: "FullLiquidationStarted",
+    inputs: [],
+    name: "VaultClosed",
     type: "event",
   },
   {
     anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "satsToRepurchase",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "startingBid",
-        type: "uint256",
-      },
-    ],
-    name: "PartialLiquidationStarted",
+    inputs: [],
+    name: "VaultClosingInit",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [],
+    name: "VaultClosingVerif",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [],
+    name: "VaultInitializing",
     type: "event",
   },
   {
@@ -171,20 +162,7 @@ export const simpleBitcoinVaultAbi = [
   },
   {
     inputs: [],
-    name: "MIN_BITCOIN_CONFIRMATIONS_FOR_DEPOSIT",
-    outputs: [
-      {
-        internalType: "uint32",
-        name: "",
-        type: "uint32",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "MIN_BITCOIN_CONFIRMATIONS_FOR_WITHDRAWAL_FINALIZATION",
+    name: "MIN_BITCOIN_CONFIRMATIONS",
     outputs: [
       {
         internalType: "uint32",
@@ -429,6 +407,13 @@ export const simpleBitcoinVaultAbi = [
         type: "bool",
       },
     ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "enterClosingVerif",
+    outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
@@ -685,6 +670,19 @@ export const simpleBitcoinVaultAbi = [
   {
     inputs: [],
     name: "operatorAdmin",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "pendingActivationOperatorAdmin",
     outputs: [
       {
         internalType: "address",
