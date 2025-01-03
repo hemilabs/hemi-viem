@@ -1,4 +1,5 @@
 {
+  "entry": ["src/index.ts", "src/contracts/index.ts"],
   "ignore": [".eslintrc.json"],
   "ignoreDependencies": ["husky", "lint-staged"]
 }
