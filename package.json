@@ -33,6 +33,7 @@
     "lint": "eslint --cache .",
     "prepare": "husky",
     "prepublishOnly": "npm run build",
+    "test": "vitest run",
     "tsc": "tsc --noEmit"
   },
   "devDependencies": {
@@ -46,7 +47,8 @@
     "lint-staged": "^15.3.0",
     "prettier": "^3.4.2",
     "typescript": "^5.7.2",
-    "viem": "2.7.19"
+    "viem": "2.7.19",
+    "vitest": "2.1.8"
   },
   "peerDependencies": {
     "viem": "^2.x"

@@ -26,8 +26,7 @@ export function isBitcoinWithdrawalFulfilled(
   return readContract(client, {
     abi: simpleBitcoinVaultStateAbi,
     address: vaultStateAddress,
-    // The withdrawalsToStatus receive just the lower 32 bits of the uuid
-    args: [getWithdrawalVaultUUID(uuid)],
+    args: [Number(getWithdrawalVaultUUID(uuid))],
     functionName: "isWithdrawalFulfilled",
   });
 }
@@ -40,8 +39,7 @@ export function isBitcoinWithdrawalChallenged(
   return readContract(client, {
     abi: simpleBitcoinVaultStateAbi,
     address: vaultStateAddress,
-    // The withdrawalsToStatus receive just the lower 32 bits of the uuid
-    args: [getWithdrawalVaultUUID(uuid)],
+    args: [Number(getWithdrawalVaultUUID(uuid))],
     functionName: "isWithdrawalAlreadyChallenged",
   });
 }
