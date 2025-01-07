@@ -2,6 +2,7 @@ import { type Address, type Client, type Hash, isHash } from "viem";
 import { readContract } from "viem/actions";
 
 import { simpleBitcoinVaultStateAbi } from "../../contracts/simple-bitcoin-vault-state.js";
+import { getWithdrawalVaultUUID } from "../../utils/withdrawals.js";
 
 export function acknowledgedDeposits(
   client: Client,
@@ -17,7 +18,7 @@ export function acknowledgedDeposits(
   });
 }
 
-export function getBitcoinWithdrawalBitcoinTxId(
+export function isBitcoinWithdrawalFulfilled(
   client: Client,
   parameters: { uuid: bigint; vaultStateAddress: Address },
 ) {
@@ -26,7 +27,21 @@ export function getBitcoinWithdrawalBitcoinTxId(
     abi: simpleBitcoinVaultStateAbi,
     address: vaultStateAddress,
     // The withdrawalsToStatus receive just the lower 32 bits of the uuid
-    args: [Number(uuid & BigInt(0xffffffff))],
-    functionName: "withdrawalsToStatus",
+    args: [getWithdrawalVaultUUID(uuid)],
+    functionName: "isWithdrawalFulfilled",
+  });
+}
+
+export function isBitcoinWithdrawalChallenged(
+  client: Client,
+  parameters: { uuid: bigint; vaultStateAddress: Address },
+) {
+  const { uuid, vaultStateAddress } = parameters;
+  return readContract(client, {
+    abi: simpleBitcoinVaultStateAbi,
+    address: vaultStateAddress,
+    // The withdrawalsToStatus receive just the lower 32 bits of the uuid
+    args: [getWithdrawalVaultUUID(uuid)],
+    functionName: "isWithdrawalAlreadyChallenged",
   });
 }
