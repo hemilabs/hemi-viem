@@ -6,10 +6,9 @@ on:
       - published
 
 jobs:
-  publish-to-npm:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: bloq/actions/publish-to-npm@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+  npm-publish:
+    permissions:
+      contents: read
+      id-token: write
+    secrets: inherit
+    uses: hemilabs/actions/.github/workflows/npm-publish.yml@main
