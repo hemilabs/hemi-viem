@@ -1,4 +1,4 @@
 {
-  "entry": ["src/index.ts", "src/contracts/index.ts"],
-  "ignore": [".eslintrc.json"]
+  "entry": ["src/index.ts!", "src/contracts/index.ts!"],
+  "project": ["src/**/*.ts!", "!src/test/**!"]
 }
