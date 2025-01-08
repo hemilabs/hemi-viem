@@ -17,6 +17,10 @@
     {
       "extends": ["bloq/markdown"],
       "files": ["*.md"]
+    },
+    {
+      "extends": ["bloq/vitest"],
+      "files": ["*.test.{js,ts}"]
     }
   ],
   "parserOptions": {

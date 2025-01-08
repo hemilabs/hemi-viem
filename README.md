@@ -39,7 +39,8 @@ const block = await client.getBlock({ blockNumber: blockNumber - 100n });
 const btcFinality = await client.getBtcFinalityByBlockHash(block);
 console.log(btcFinality);
 
-const btcHeader = await client.getLastHeader();
+const bitcoinKitAddress = "0x0000000000000000000000000000000000000000"; // example address
+const btcHeader = await client.getLastHeader({ bitcoinKitAddress });
 console.log(btcHeader);
 ```
 

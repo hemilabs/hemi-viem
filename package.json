@@ -33,20 +33,24 @@
     "deps:check": "knip",
     "format:check": "prettier --check .",
     "lint": "eslint --cache .",
+    "prepare": "husky",
     "prepublishOnly": "npm run build",
+    "test": "vitest run",
     "tsc": "tsc --noEmit"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.5.0",
+    "@commitlint/cli": "^19.6.1",
     "better-sort-package-json": "^1.1.0",
     "commitlint-config-bloq": "^1.0.0",
     "eslint": "^8.57.1",
-    "eslint-config-bloq": "^4.2.0",
-    "husky": "^4.3.8",
-    "knip": "^5.34.0",
-    "lint-staged": "^15.2.7",
-    "prettier": "^3.3.2",
-    "typescript": "^5.5.3"
+    "eslint-config-bloq": "^4.4.1",
+    "husky": "^9.1.7",
+    "knip": "^5.41.1",
+    "lint-staged": "^15.3.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "viem": "2.7.19",
+    "vitest": "2.1.8"
   },
   "peerDependencies": {
     "viem": "^2.x"
@@ -57,9 +61,20 @@
       "import": "./_esm/index.js",
       "require": "./_cjs/index.js",
       "types": "./_types/index.d.ts"
+    },
+    "./contracts": {
+      "import": "./_esm/contracts/index.js",
+      "types": "./_types/contracts/index.d.ts"
     }
   },
   "module": "./_esm/index.js",
   "types": "./_types/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "contracts": [
+        "_types/contracts/index.d.ts"
+      ]
+    }
+  },
   "typings": "./_types/index.d.ts"
 }
