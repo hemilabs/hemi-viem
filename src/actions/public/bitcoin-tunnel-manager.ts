@@ -26,7 +26,7 @@ export async function getVaultIndexByBTCAddress(
   parameters: { btcAddress: string },
 ) {
   const { btcAddress } = parameters;
-  // We're assuming for now all vaults are SimpleBitcoinVault
+  // We're assuming for now that all vaults are SimpleBitcoinVault
 
   const vaultCounter = await readContract(client, {
     abi: bitcoinTunnelManagerAbi,
