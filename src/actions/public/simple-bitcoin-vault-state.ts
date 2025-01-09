@@ -2,7 +2,14 @@ import { type Address, type Client, type Hash, isHash } from "viem";
 import { readContract } from "viem/actions";
 
 import { simpleBitcoinVaultStateAbi } from "../../contracts/simple-bitcoin-vault-state.js";
-import { getWithdrawalVaultUUID } from "../../utils/withdrawals.js";
+
+/**
+ * Gets the withdrawal UUID specific to the associated vault.
+ * @param uuid The withdrawal UUID
+ * @returns The withdrawal uuid specific to the associated vault.
+ */
+export const getWithdrawalVaultUUID = (uuid: bigint) =>
+  uuid & BigInt(0x00000000ffffffff);
 
 export function acknowledgedDeposits(
   client: Client,
