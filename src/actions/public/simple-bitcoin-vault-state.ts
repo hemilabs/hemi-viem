@@ -8,7 +8,7 @@ import { simpleBitcoinVaultStateAbi } from "../../contracts/simple-bitcoin-vault
  * @param uuid The withdrawal UUID
  * @returns The withdrawal uuid specific to the associated vault.
  */
-export const getWithdrawalVaultUUID = (uuid: bigint) =>
+const getWithdrawalVaultUUID = (uuid: bigint) =>
   uuid & BigInt(0x00000000ffffffff);
 
 export function acknowledgedDeposits(
