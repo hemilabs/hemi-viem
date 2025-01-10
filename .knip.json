@@ -1,4 +1,4 @@
 {
-  "ignore": [".eslintrc.json"],
-  "ignoreDependencies": ["@commitlint/cli", "husky", "lint-staged"]
+  "entry": ["src/index.ts!", "src/contracts/index.ts!"],
+  "project": ["src/**/*.ts!", "!src/test/**!"]
 }
