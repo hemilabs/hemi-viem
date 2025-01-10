@@ -30,7 +30,7 @@
     "build:esm": "tsc --noEmit false --outDir ./_esm --sourceMap",
     "build:types": "tsc --module esnext --declarationDir ./_types --emitDeclarationOnly --declaration --declarationMap",
     "clean": "rm -rf ./_esm ./_cjs ./_types",
-    "deps:check": "knip --production --tags=-knipignore",
+    "deps:check": "knip --production",
     "format:check": "prettier --check .",
     "lint": "eslint --cache .",
     "prepare": "husky",
