@@ -41,6 +41,32 @@ export function getBitcoinWithdrawalGracePeriod(
   });
 }
 
+export const getMinimumDepositSats = function (
+  client: Client,
+  parameters: { vaultAddress: Address },
+) {
+  const { vaultAddress } = parameters;
+  return readContract(client, {
+    abi: simpleBitcoinVaultAbi,
+    address: vaultAddress,
+    args: [],
+    functionName: "MINIMUM_DEPOSIT_SATS",
+  });
+};
+
+export const getMinimumWithdrawalSats = function (
+  client: Client,
+  parameters: { vaultAddress: Address },
+) {
+  const { vaultAddress } = parameters;
+  return readContract(client, {
+    abi: simpleBitcoinVaultAbi,
+    address: vaultAddress,
+    args: [],
+    functionName: "MINIMUM_WITHDRAWAL_SATS",
+  });
+};
+
 export function getVaultStatus(
   client: Client,
   parameters: { vaultAddress: Address },
