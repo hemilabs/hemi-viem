@@ -58,13 +58,14 @@ export function getTransactionByTxId(
 
 export function getTxConfirmations(
   client: Client,
-  parameters: { bitcoinKitAddress: Address; txId: Hash },
+  parameters: { bitcoinKitAddress: Address; txId: string },
 ) {
   const { bitcoinKitAddress, txId } = parameters;
+  const hash: Hash = isHash(txId) ? txId : `0x${txId}`;
   return readContract(client, {
     abi: bitcoinKitTxsAbi,
     address: bitcoinKitAddress,
-    args: [txId],
+    args: [hash],
     functionName: "getTxConfirmations",
   });
 }
