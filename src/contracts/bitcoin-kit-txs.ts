@@ -10,9 +10,9 @@ export const bitcoinKitTxsAbi = [
     name: "getBitcoinAddressBalance",
     outputs: [
       {
-        internalType: "uint256",
+        internalType: "uint64",
         name: "balance",
-        type: "uint256",
+        type: "uint64",
       },
     ],
     stateMutability: "view",
@@ -137,6 +137,157 @@ export const bitcoinKitTxsAbi = [
   {
     inputs: [
       {
+        internalType: "string",
+        name: "btcAddress",
+        type: "string",
+      },
+    ],
+    name: "getScriptForAddress",
+    outputs: [
+      {
+        internalType: "bytes",
+        name: "script",
+        type: "bytes",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "txId",
+        type: "bytes32",
+      },
+      {
+        internalType: "uint32",
+        name: "inputIndex",
+        type: "uint32",
+      },
+    ],
+    name: "getSpecificTxInput",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "uint256",
+            name: "witnessElements",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "inValue",
+            type: "uint256",
+          },
+          {
+            internalType: "bytes32",
+            name: "inputTxId",
+            type: "bytes32",
+          },
+          {
+            internalType: "uint256",
+            name: "sourceIndex",
+            type: "uint256",
+          },
+          {
+            internalType: "bytes",
+            name: "scriptSig",
+            type: "bytes",
+          },
+          {
+            internalType: "uint256",
+            name: "sequence",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "fullScriptSigLength",
+            type: "uint256",
+          },
+          {
+            internalType: "bool",
+            name: "containsFullScriptSig",
+            type: "bool",
+          },
+        ],
+        internalType: "struct Input",
+        name: "",
+        type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "txId",
+        type: "bytes32",
+      },
+      {
+        internalType: "uint32",
+        name: "outputIndex",
+        type: "uint32",
+      },
+    ],
+    name: "getSpecificTxOutput",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "uint256",
+            name: "outValue",
+            type: "uint256",
+          },
+          {
+            internalType: "bytes",
+            name: "script",
+            type: "bytes",
+          },
+          {
+            internalType: "string",
+            name: "outputAddress",
+            type: "string",
+          },
+          {
+            internalType: "bool",
+            name: "isOpReturn",
+            type: "bool",
+          },
+          {
+            internalType: "bytes",
+            name: "opReturnData",
+            type: "bytes",
+          },
+          {
+            internalType: "bool",
+            name: "isSpent",
+            type: "bool",
+          },
+          {
+            internalType: "uint256",
+            name: "fullScriptLength",
+            type: "uint256",
+          },
+          {
+            internalType: "bool",
+            name: "containsFullScript",
+            type: "bool",
+          },
+        ],
+        internalType: "struct Output",
+        name: "",
+        type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "bytes32",
         name: "txId",
         type: "bytes32",
@@ -173,6 +324,11 @@ export const bitcoinKitTxsAbi = [
           },
           {
             components: [
+              {
+                internalType: "uint256",
+                name: "witnessElements",
+                type: "uint256",
+              },
               {
                 internalType: "uint256",
                 name: "inValue",
@@ -255,23 +411,6 @@ export const bitcoinKitTxsAbi = [
                 name: "containsFullScript",
                 type: "bool",
               },
-              {
-                components: [
-                  {
-                    internalType: "bytes32",
-                    name: "spendingTxId",
-                    type: "bytes32",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "inputIndex",
-                    type: "uint256",
-                  },
-                ],
-                internalType: "struct SpentDetail",
-                name: "spentDetail",
-                type: "tuple",
-              },
             ],
             internalType: "struct Output[]",
             name: "outputs",
@@ -328,19 +467,57 @@ export const bitcoinKitTxsAbi = [
   {
     inputs: [
       {
+        internalType: "bytes32",
+        name: "txId",
+        type: "bytes32",
+      },
+    ],
+    name: "getTxInputCount",
+    outputs: [
+      {
+        internalType: "uint32",
+        name: "txInputCount",
+        type: "uint32",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "txId",
+        type: "bytes32",
+      },
+    ],
+    name: "getTxOutputCount",
+    outputs: [
+      {
+        internalType: "uint32",
+        name: "txOutputCount",
+        type: "uint32",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "string",
         name: "btcAddress",
         type: "string",
       },
       {
-        internalType: "uint256",
+        internalType: "uint32",
         name: "pageNumber",
-        type: "uint256",
+        type: "uint32",
       },
       {
-        internalType: "uint256",
+        internalType: "uint32",
         name: "pageSize",
-        type: "uint256",
+        type: "uint32",
       },
     ],
     name: "getUTXOsForBitcoinAddress",
@@ -371,6 +548,44 @@ export const bitcoinKitTxsAbi = [
         internalType: "struct UTXO[]",
         name: "",
         type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "btcAddress",
+        type: "string",
+      },
+    ],
+    name: "isAddressValid",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "txId",
+        type: "bytes32",
+      },
+    ],
+    name: "transactionExists",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "exists",
+        type: "bool",
       },
     ],
     stateMutability: "view",
