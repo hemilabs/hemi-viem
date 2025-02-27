@@ -75,8 +75,8 @@ export function getUtxosForBitcoinAddress(
   parameters: {
     bitcoinKitAddress: Address;
     btcAddress: string;
-    pageNumber: bigint;
-    pageSize: bigint;
+    pageNumber: number;
+    pageSize: number;
   },
 ) {
   const { bitcoinKitAddress, btcAddress, pageNumber, pageSize } = parameters;
