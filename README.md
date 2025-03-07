@@ -2,7 +2,7 @@
 
 ![NPM Version](https://img.shields.io/npm/v/hemi-viem)
 
-[Viem](https://viem.sh/) extension for the [Hemi Network](https://hemi.xyz/).
+[Viem](https://viem.sh/) extension for the [Hemi](https://hemi.xyz/) network.
 It includes:
 
 - Chain definitions!

@@ -7,7 +7,7 @@ export const hemi = defineChain({
   ...chainConfig,
   blockExplorers: {
     default: {
-      name: "Hemi Network Explorer",
+      name: "Hemi Explorer",
       url: "https://explorer.hemi.xyz",
     },
   },
@@ -48,7 +48,7 @@ export const hemi = defineChain({
     },
   },
   id: 43_111,
-  name: "Hemi Network",
+  name: "Hemi",
   nativeCurrency: {
     decimals: 18,
     name: "Ether",
