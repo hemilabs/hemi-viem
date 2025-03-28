@@ -12,6 +12,7 @@ export const hemiSepolia = defineChain({
     },
   },
   contracts: {
+    ...chainConfig.contracts,
     addressManager: {
       [sourceId]: {
         address: "0x23f0022354241FDb721Dc43E7897d7Af662A2995",

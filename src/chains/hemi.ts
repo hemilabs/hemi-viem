@@ -12,6 +12,7 @@ export const hemi = defineChain({
     },
   },
   contracts: {
+    ...chainConfig.contracts,
     addressManager: {
       [sourceId]: {
         address: "0xA5F37791378c55941a52B4dCb70Be4D8D09f5e43",
