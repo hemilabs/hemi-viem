@@ -6,7 +6,9 @@ type Actions = {
 };
 
 type DecoratedActions<T extends Actions> = {
-  [K in keyof T]: (properties: Parameters<T[K]>[1]) => ReturnType<T[K]>;
+  [K in keyof T]: Parameters<T[K]>[1] extends undefined
+    ? () => ReturnType<T[K]>
+    : (properties: Parameters<T[K]>[1]) => ReturnType<T[K]>;
 };
 
 export const actionsToDecorator =
