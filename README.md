@@ -7,7 +7,7 @@ It includes:
 
 - Chain definitions!
 - [Bitcoin finality](https://docs.hemi.xyz/foundational-topics/pop-consensus-and-bitcoin-finality) helper!
-- [Bitcoin Kit](https://github.com/hemilabs/research/blob/main/research/Bitcoin-kit.md) wrappers!
+- [Bitcoin Kit](https://docs.hemi.xyz/building-bitcoin-apps/hemi-bitcoin-kit-hbk) wrappers!
 
 ## Installation
 
