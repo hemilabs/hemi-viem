@@ -1,5 +1,5 @@
 import { encodeFunctionData, Hash, isHash } from "viem";
-import { bitcoinTunnelManagerAbi } from "../../contracts";
+import { bitcoinTunnelManagerAbi } from "../../contracts/bitcoin-tunnel-manager.js";
 
 /**
  * Encodes the transaction data for challenging a BTC withdrawal using the `challengeWithdrawal` function.
