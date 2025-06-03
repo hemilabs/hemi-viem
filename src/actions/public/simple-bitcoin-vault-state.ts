@@ -17,7 +17,7 @@ import {
 const getWithdrawalVaultUUID = (uuid: bigint) =>
   uuid & BigInt(0x00000000ffffffff);
 
-export function acknowledgedDeposits(
+export async function acknowledgedDeposits(
   client: Client,
   parameters: { txId: string; vaultStateAddress: Address },
 ) {
@@ -34,7 +34,7 @@ export function acknowledgedDeposits(
   });
 }
 
-export function isBitcoinWithdrawalFulfilled(
+export async function isBitcoinWithdrawalFulfilled(
   client: Client,
   parameters: { uuid: bigint; vaultStateAddress: Address },
 ) {
@@ -50,7 +50,7 @@ export function isBitcoinWithdrawalFulfilled(
   });
 }
 
-export function isBitcoinWithdrawalChallenged(
+export async function isBitcoinWithdrawalChallenged(
   client: Client,
   parameters: { uuid: bigint; vaultStateAddress: Address },
 ) {

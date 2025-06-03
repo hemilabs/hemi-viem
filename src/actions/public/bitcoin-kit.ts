@@ -9,7 +9,7 @@ import {
   assertPositiveInteger,
 } from "../../utils.js";
 
-export function getBitcoinAddressBalance(
+export async function getBitcoinAddressBalance(
   client: Client,
   parameters: { bitcoinKitAddress: Address; btcAddress: string },
 ) {
@@ -25,7 +25,7 @@ export function getBitcoinAddressBalance(
   });
 }
 
-export function getHeaderN(
+export async function getHeaderN(
   client: Client,
   parameters: { bitcoinKitAddress: Address; height: number },
 ) {
@@ -41,7 +41,7 @@ export function getHeaderN(
   });
 }
 
-export const getLastHeader = function (
+export async function getLastHeader(
   client: Client,
   parameters: { bitcoinKitAddress: Address },
 ) {
@@ -54,9 +54,9 @@ export const getLastHeader = function (
     args: [],
     functionName: "getLastHeader",
   });
-};
+}
 
-export function getTransactionByTxId(
+export async function getTransactionByTxId(
   client: Client,
   parameters: { bitcoinKitAddress: Address; txId: string },
 ) {
@@ -73,7 +73,7 @@ export function getTransactionByTxId(
   });
 }
 
-export function getTxConfirmations(
+export async function getTxConfirmations(
   client: Client,
   parameters: { bitcoinKitAddress: Address; txId: string },
 ) {
@@ -90,7 +90,7 @@ export function getTxConfirmations(
   });
 }
 
-export function getUtxosForBitcoinAddress(
+export async function getUtxosForBitcoinAddress(
   client: Client,
   parameters: {
     bitcoinKitAddress: Address;

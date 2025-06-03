@@ -14,7 +14,7 @@ import {
   assertPositiveInteger,
 } from "../../utils.js";
 
-export function confirmDeposit(
+export async function confirmDeposit(
   client: Client,
   parameters: {
     extraInfo: Hash;
@@ -43,7 +43,7 @@ export function confirmDeposit(
   });
 }
 
-export function initiateWithdrawal(
+export async function initiateWithdrawal(
   client: Client,
   parameters: {
     amount: bigint;
@@ -68,7 +68,7 @@ export function initiateWithdrawal(
   });
 }
 
-export function challengeWithdrawal(
+export async function challengeWithdrawal(
   client: Client,
   parameters: {
     extraInfo?: Hash;

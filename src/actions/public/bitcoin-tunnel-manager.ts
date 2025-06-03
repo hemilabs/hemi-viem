@@ -13,7 +13,7 @@ import {
 
 import { getBitcoinCustodyAddress } from "./simple-bitcoin-vault.js";
 
-export function getVaultByIndex(
+export async function getVaultByIndex(
   client: Client,
   parameters: { vaultIndex: number },
 ) {
@@ -55,7 +55,7 @@ export async function getVaultIndexByBTCAddress(
   throw new Error("Vault not found");
 }
 
-export const getBitcoinKitAddress = async (client: Client) =>
+export const getBitcoinKitAddress = (client: Client) =>
   readContract(client, {
     abi: bitcoinTunnelManagerAbi,
     address: bitcoinTunnelManagerAddresses[client.chain!.id],
