@@ -2,6 +2,12 @@ import { type Address, type Client, type Hash, isHash } from "viem";
 import { readContract } from "viem/actions";
 
 import { simpleBitcoinVaultStateAbi } from "../../contracts/simple-bitcoin-vault-state.js";
+import {
+  assertAddress,
+  assertBigInt,
+  assertObject,
+  assertNonEmptyString,
+} from "../../utils.js";
 
 /**
  * Gets the withdrawal UUID specific to the associated vault.
@@ -11,11 +17,14 @@ import { simpleBitcoinVaultStateAbi } from "../../contracts/simple-bitcoin-vault
 const getWithdrawalVaultUUID = (uuid: bigint) =>
   uuid & BigInt(0x00000000ffffffff);
 
-export function acknowledgedDeposits(
+export async function acknowledgedDeposits(
   client: Client,
   parameters: { txId: string; vaultStateAddress: Address },
 ) {
+  assertObject(parameters, "parameters");
   const { txId, vaultStateAddress } = parameters;
+  assertNonEmptyString(txId, "txId");
+  assertAddress(vaultStateAddress, "vaultStateAddress");
   const hash: Hash = isHash(txId) ? txId : `0x${txId}`;
   return readContract(client, {
     abi: simpleBitcoinVaultStateAbi,
@@ -25,11 +34,14 @@ export function acknowledgedDeposits(
   });
 }
 
-export function isBitcoinWithdrawalFulfilled(
+export async function isBitcoinWithdrawalFulfilled(
   client: Client,
   parameters: { uuid: bigint; vaultStateAddress: Address },
 ) {
+  assertObject(parameters, "parameters");
   const { uuid, vaultStateAddress } = parameters;
+  assertBigInt(uuid, "uuid");
+  assertAddress(vaultStateAddress, "vaultStateAddress");
   return readContract(client, {
     abi: simpleBitcoinVaultStateAbi,
     address: vaultStateAddress,
@@ -38,11 +50,14 @@ export function isBitcoinWithdrawalFulfilled(
   });
 }
 
-export function isBitcoinWithdrawalChallenged(
+export async function isBitcoinWithdrawalChallenged(
   client: Client,
   parameters: { uuid: bigint; vaultStateAddress: Address },
 ) {
+  assertObject(parameters, "parameters");
   const { uuid, vaultStateAddress } = parameters;
+  assertBigInt(uuid, "uuid");
+  assertAddress(vaultStateAddress, "vaultStateAddress");
   return readContract(client, {
     abi: simpleBitcoinVaultStateAbi,
     address: vaultStateAddress,

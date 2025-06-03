@@ -5,14 +5,21 @@ import {
   bitcoinTunnelManagerAbi,
   bitcoinTunnelManagerAddresses,
 } from "../../contracts/bitcoin-tunnel-manager.js";
+import {
+  assertNonEmptyString,
+  assertObject,
+  assertPositiveInteger,
+} from "../../utils.js";
 
 import { getBitcoinCustodyAddress } from "./simple-bitcoin-vault.js";
 
-export function getVaultByIndex(
+export async function getVaultByIndex(
   client: Client,
   parameters: { vaultIndex: number },
 ) {
+  assertObject(parameters, "parameters");
   const { vaultIndex } = parameters;
+  assertPositiveInteger(vaultIndex, "vaultIndex");
   return readContract(client, {
     abi: bitcoinTunnelManagerAbi,
     address: bitcoinTunnelManagerAddresses[client.chain!.id],
@@ -25,7 +32,9 @@ export async function getVaultIndexByBTCAddress(
   client: Client,
   parameters: { btcAddress: string },
 ) {
+  assertObject(parameters, "parameters");
   const { btcAddress } = parameters;
+  assertNonEmptyString(btcAddress, "btcAddress");
   // We're assuming for now that all vaults are SimpleBitcoinVault
 
   const vaultCounter = await readContract(client, {
@@ -46,7 +55,7 @@ export async function getVaultIndexByBTCAddress(
   throw new Error("Vault not found");
 }
 
-export const getBitcoinKitAddress = async (client: Client) =>
+export const getBitcoinKitAddress = (client: Client) =>
   readContract(client, {
     abi: bitcoinTunnelManagerAbi,
     address: bitcoinTunnelManagerAddresses[client.chain!.id],

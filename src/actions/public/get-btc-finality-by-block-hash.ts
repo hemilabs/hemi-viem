@@ -1,10 +1,14 @@
 import { type Client, type Hash, http } from "viem";
 
+import { assertObject, assertHash } from "../../utils.js";
+
 export async function getBtcFinalityByBlockHash(
   client: Client,
   parameters: { hash: Hash },
 ) {
+  assertObject(parameters, "parameters");
   const { hash } = parameters;
+  assertHash(hash, "hash");
   try {
     const opNodeHttp = http(client.chain!.rpcUrls.opNode.http[0]);
     const transport = opNodeHttp({});
