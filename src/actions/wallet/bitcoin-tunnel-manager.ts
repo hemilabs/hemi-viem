@@ -5,6 +5,14 @@ import {
   bitcoinTunnelManagerAbi,
   bitcoinTunnelManagerAddresses,
 } from "../../contracts/bitcoin-tunnel-manager.js";
+import {
+  assertAddress,
+  assertBigInt,
+  assertHash,
+  assertNonEmptyString,
+  assertObject,
+  assertPositiveInteger,
+} from "../../utils.js";
 
 export function confirmDeposit(
   client: Client,
@@ -16,7 +24,14 @@ export function confirmDeposit(
     vaultIndex: number;
   },
 ) {
+  assertObject(parameters, "parameters");
   const { extraInfo, from, outputIndex, txId, vaultIndex } = parameters;
+  assertHash(extraInfo, "extraInfo");
+  assertAddress(from, "from");
+  assertBigInt(outputIndex, "outputIndex");
+  assertNonEmptyString(txId, "txId");
+  assertPositiveInteger(vaultIndex, "vaultIndex");
+  // extraInfo is a Hash, assume already validated by type system or upstream
   const hash: Hash = isHash(txId) ? txId : `0x${txId}`;
   return writeContract(client, {
     abi: bitcoinTunnelManagerAbi,
@@ -37,7 +52,12 @@ export function initiateWithdrawal(
     vaultIndex: number;
   },
 ) {
+  assertObject(parameters, "parameters");
   const { amount, btcAddress, from, vaultIndex } = parameters;
+  assertBigInt(amount, "amount");
+  assertNonEmptyString(btcAddress, "btcAddress");
+  assertAddress(from, "from");
+  assertPositiveInteger(vaultIndex, "vaultIndex");
   return writeContract(client, {
     abi: bitcoinTunnelManagerAbi,
     account: from,
@@ -56,12 +76,17 @@ export function challengeWithdrawal(
     uuid: bigint;
   },
 ) {
-  const { extraInfo, from, uuid } = parameters;
+  assertObject(parameters, "parameters");
+  const { extraInfo = "0x", from, uuid } = parameters;
+  assertAddress(from, "from");
+  assertBigInt(uuid, "uuid");
+  assertHash(extraInfo, "extraInfo");
+
   return writeContract(client, {
     abi: bitcoinTunnelManagerAbi,
     account: from,
     address: bitcoinTunnelManagerAddresses[client.chain!.id],
-    args: [uuid, extraInfo ?? "0x"],
+    args: [uuid, extraInfo],
     chain: client.chain,
     functionName: "challengeWithdrawal",
   });

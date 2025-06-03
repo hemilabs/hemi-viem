@@ -2,12 +2,21 @@ import { type Address, type Client, isHash, type Hash } from "viem";
 import { readContract } from "viem/actions";
 
 import { bitcoinKitTxsAbi } from "../../contracts/bitcoin-kit-txs.js";
+import {
+  assertAddress,
+  assertNonEmptyString,
+  assertObject,
+  assertPositiveInteger,
+} from "../../utils.js";
 
 export function getBitcoinAddressBalance(
   client: Client,
   parameters: { bitcoinKitAddress: Address; btcAddress: string },
 ) {
+  assertObject(parameters, "parameters");
   const { bitcoinKitAddress, btcAddress } = parameters;
+  assertAddress(bitcoinKitAddress, "bitcoinKitAddress");
+  assertNonEmptyString(btcAddress, "btcAddress");
   return readContract(client, {
     abi: bitcoinKitTxsAbi,
     address: bitcoinKitAddress,
@@ -20,7 +29,10 @@ export function getHeaderN(
   client: Client,
   parameters: { bitcoinKitAddress: Address; height: number },
 ) {
+  assertObject(parameters, "parameters");
   const { bitcoinKitAddress, height } = parameters;
+  assertAddress(bitcoinKitAddress, "bitcoinKitAddress");
+  assertPositiveInteger(height, "height");
   return readContract(client, {
     abi: bitcoinKitTxsAbi,
     address: bitcoinKitAddress,
@@ -33,7 +45,9 @@ export const getLastHeader = function (
   client: Client,
   parameters: { bitcoinKitAddress: Address },
 ) {
+  assertObject(parameters, "parameters");
   const { bitcoinKitAddress } = parameters;
+  assertAddress(bitcoinKitAddress, "bitcoinKitAddress");
   return readContract(client, {
     abi: bitcoinKitTxsAbi,
     address: bitcoinKitAddress,
@@ -46,7 +60,10 @@ export function getTransactionByTxId(
   client: Client,
   parameters: { bitcoinKitAddress: Address; txId: string },
 ) {
+  assertObject(parameters, "parameters");
   const { bitcoinKitAddress, txId } = parameters;
+  assertAddress(bitcoinKitAddress, "bitcoinKitAddress");
+  assertNonEmptyString(txId, "txId");
   const hash: Hash = isHash(txId) ? txId : `0x${txId}`;
   return readContract(client, {
     abi: bitcoinKitTxsAbi,
@@ -60,7 +77,10 @@ export function getTxConfirmations(
   client: Client,
   parameters: { bitcoinKitAddress: Address; txId: string },
 ) {
+  assertObject(parameters, "parameters");
   const { bitcoinKitAddress, txId } = parameters;
+  assertAddress(bitcoinKitAddress, "bitcoinKitAddress");
+  assertNonEmptyString(txId, "txId");
   const hash: Hash = isHash(txId) ? txId : `0x${txId}`;
   return readContract(client, {
     abi: bitcoinKitTxsAbi,
@@ -79,7 +99,12 @@ export function getUtxosForBitcoinAddress(
     pageSize: number;
   },
 ) {
+  assertObject(parameters, "parameters");
   const { bitcoinKitAddress, btcAddress, pageNumber, pageSize } = parameters;
+  assertAddress(bitcoinKitAddress, "bitcoinKitAddress");
+  assertNonEmptyString(btcAddress, "btcAddress");
+  assertPositiveInteger(pageNumber, "pageNumber");
+  assertPositiveInteger(pageSize, "pageSize");
   return readContract(client, {
     abi: bitcoinKitTxsAbi,
     address: bitcoinKitAddress,
