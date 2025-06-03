@@ -31,7 +31,6 @@ export async function confirmDeposit(
   assertBigInt(outputIndex, "outputIndex");
   assertNonEmptyString(txId, "txId");
   assertPositiveInteger(vaultIndex, "vaultIndex");
-  // extraInfo is a Hash, assume already validated by type system or upstream
   const hash: Hash = isHash(txId) ? txId : `0x${txId}`;
   return writeContract(client, {
     abi: bitcoinTunnelManagerAbi,
