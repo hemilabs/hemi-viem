@@ -1,6 +1,6 @@
 {
   "name": "hemi-viem",
-  "version": "2.4.2",
+  "version": "2.5.0",
   "description": "Viem extension for the Hemi network",
   "bugs": {
     "url": "https://github.com/hemilabs/hemi-viem/issues"
