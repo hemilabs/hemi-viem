@@ -4,11 +4,6 @@ import { readContract } from "viem/actions";
 import { simpleBitcoinVaultAbi } from "../../contracts/simple-bitcoin-vault.js";
 import { assertAddress, assertObject } from "../../utils.js";
 
-import {
-  getPendingWithdrawalAmountSat,
-  getPendingWithdrawalCount,
-} from "./simple-bitcoin-vault-state.js";
-
 export async function getBitcoinCustodyAddress(
   client: Client,
   parameters: { vaultAddress: Address },
@@ -96,26 +91,4 @@ export async function getVaultStatus(
     args: [],
     functionName: "getStatus",
   });
-}
-
-export async function getVaultPendingWithdrawalsData(
-  client: Client,
-  parameters: { vaultAddress: Address },
-) {
-  assertObject(parameters, "parameters");
-  const { vaultAddress } = parameters;
-  assertAddress(vaultAddress, "vaultAddress");
-  const vaultStateAddress = await getBitcoinVaultStateAddress(client, {
-    vaultAddress,
-  });
-  const pendingWithdrawalCount = await getPendingWithdrawalCount(client, {
-    vaultStateAddress,
-  });
-  const pendingWithdrawalAmountSat = pendingWithdrawalCount
-    ? await getPendingWithdrawalAmountSat(client, { vaultStateAddress })
-    : BigInt(0);
-  return {
-    pendingWithdrawalAmountSat,
-    pendingWithdrawalCount,
-  };
 }
