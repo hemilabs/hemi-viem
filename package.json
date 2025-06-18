@@ -1,6 +1,6 @@
 {
   "name": "hemi-viem",
-  "version": "2.4.2",
+  "version": "2.5.0",
   "description": "Viem extension for the Hemi network",
   "bugs": {
     "url": "https://github.com/hemilabs/hemi-viem/issues"
@@ -43,7 +43,7 @@
     "better-sort-package-json": "^1.1.0",
     "commitlint-config-bloq": "^1.0.0",
     "eslint": "^8.57.1",
-    "eslint-config-bloq": "^4.4.1",
+    "eslint-config-bloq": "^4.6.0",
     "husky": "^9.1.7",
     "knip": "^5.41.1",
     "lint-staged": "^15.3.0",

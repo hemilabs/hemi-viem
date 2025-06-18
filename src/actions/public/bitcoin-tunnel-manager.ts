@@ -11,6 +11,8 @@ import {
   assertPositiveInteger,
 } from "../../utils.js";
 
+import { getLastHeader } from "./bitcoin-kit.js";
+import { getWithdrawalsPaused } from "./global-config.js";
 import { getBitcoinCustodyAddress } from "./simple-bitcoin-vault.js";
 
 export async function getVaultByIndex(
@@ -62,3 +64,30 @@ export const getBitcoinKitAddress = (client: Client) =>
     args: [],
     functionName: "originalBitcoinKitContract",
   });
+
+export const getVaultCounter = (client: Client) =>
+  readContract(client, {
+    abi: bitcoinTunnelManagerAbi,
+    address: bitcoinTunnelManagerAddresses[client.chain!.id],
+    functionName: "vaultCounter",
+  });
+
+export const getGlobalConfigAddress = (client: Client) =>
+  readContract(client, {
+    abi: bitcoinTunnelManagerAbi,
+    address: bitcoinTunnelManagerAddresses[client.chain!.id],
+    functionName: "globalConfig",
+  });
+
+export async function getTunnelManagerStatus(client: Client) {
+  const globalConfigAddress = await getGlobalConfigAddress(client);
+  const withdrawalsPaused = await getWithdrawalsPaused(client, {
+    globalConfigAddress,
+  });
+  return { withdrawalsPaused };
+}
+
+export async function getBitcoinChainLastHeader(client: Client) {
+  const bitcoinKitAddress = await getBitcoinKitAddress(client);
+  return getLastHeader(client, { bitcoinKitAddress });
+}

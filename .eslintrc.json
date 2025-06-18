@@ -3,7 +3,7 @@
   "ignorePatterns": ["_esm/*", "_cjs/*", "_types/*"],
   "overrides": [
     {
-      "extends": ["bloq/typescript", "prettier"],
+      "extends": ["bloq/esm", "bloq/typescript", "prettier"],
       "files": ["src/**/*.ts"],
       "rules": {
         "camelcase": [

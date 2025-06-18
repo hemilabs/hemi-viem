@@ -65,3 +65,31 @@ export async function isBitcoinWithdrawalChallenged(
     functionName: "isWithdrawalAlreadyChallenged",
   });
 }
+
+export function getPendingWithdrawalCount(
+  client: Client,
+  parameters: { vaultStateAddress: Address },
+) {
+  assertObject(parameters, "parameters");
+  const { vaultStateAddress } = parameters;
+  assertAddress(vaultStateAddress, "vaultStateAddress");
+  return readContract(client, {
+    abi: simpleBitcoinVaultStateAbi,
+    address: vaultStateAddress,
+    functionName: "pendingWithdrawalCount",
+  });
+}
+
+export function getPendingWithdrawalAmountSat(
+  client: Client,
+  parameters: { vaultStateAddress: Address },
+) {
+  assertObject(parameters, "parameters");
+  const { vaultStateAddress } = parameters;
+  assertAddress(vaultStateAddress, "vaultStateAddress");
+  return readContract(client, {
+    abi: simpleBitcoinVaultStateAbi,
+    address: vaultStateAddress,
+    functionName: "pendingWithdrawalAmountSat",
+  });
+}
