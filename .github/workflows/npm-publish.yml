@@ -10,5 +10,5 @@ jobs:
     permissions:
       contents: read
       id-token: write
+    uses: hemilabs/actions/.github/workflows/npm-publish.yml@v1
     secrets: inherit
-    uses: hemilabs/actions/.github/workflows/npm-publish.yml@main
