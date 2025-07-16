@@ -34,6 +34,42 @@ export async function acknowledgedDeposits(
   });
 }
 
+export async function calculateDepositFee(
+  client: Client,
+  parameters: { depositAmount: bigint; vaultStateAddress: Address },
+) {
+  assertObject(parameters, "parameters");
+  const { depositAmount, vaultStateAddress } = parameters;
+
+  assertAddress(vaultStateAddress, "vaultStateAddress");
+  assertBigInt(depositAmount, "depositAmount");
+
+  return readContract(client, {
+    abi: simpleBitcoinVaultStateAbi,
+    address: vaultStateAddress,
+    args: [depositAmount],
+    functionName: "calculateDepositFee",
+  });
+}
+
+export async function calculateWithdrawalFee(
+  client: Client,
+  parameters: { vaultStateAddress: Address; withdrawalAmount: bigint },
+) {
+  assertObject(parameters, "parameters");
+  const { vaultStateAddress, withdrawalAmount } = parameters;
+
+  assertAddress(vaultStateAddress, "vaultStateAddress");
+  assertBigInt(withdrawalAmount, "withdrawalAmount");
+
+  return readContract(client, {
+    abi: simpleBitcoinVaultStateAbi,
+    address: vaultStateAddress,
+    args: [withdrawalAmount],
+    functionName: "calculateWithdrawalFee",
+  });
+}
+
 export async function isBitcoinWithdrawalFulfilled(
   client: Client,
   parameters: { uuid: bigint; vaultStateAddress: Address },
