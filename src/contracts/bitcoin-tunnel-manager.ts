@@ -1,6 +1,7 @@
 import { type Address, type Chain } from "viem";
-import { hemi } from "../chains/hemi.js";
+
 import { hemiSepolia } from "../chains/hemi-sepolia.js";
+import { hemi } from "../chains/hemi.js";
 
 export const bitcoinTunnelManagerAddresses: Record<Chain["id"], Address> = {
   [hemi.id]: "0xEAcA824F46c000fB89403846Bb57e6b913321081",

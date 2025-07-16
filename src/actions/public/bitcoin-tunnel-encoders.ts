@@ -1,4 +1,5 @@
 import { encodeFunctionData, Hash, isHash } from "viem";
+
 import { bitcoinTunnelManagerAbi } from "../../contracts/bitcoin-tunnel-manager.js";
 
 /**
@@ -11,11 +12,11 @@ import { bitcoinTunnelManagerAbi } from "../../contracts/bitcoin-tunnel-manager.
  * @returns {Hex} - The encoded transaction data.
  */
 export const encodeChallengeWithdrawal = ({
-  uuid,
   extraInfo,
+  uuid,
 }: {
-  uuid: bigint;
   extraInfo?: Hash;
+  uuid: bigint;
 }) =>
   encodeFunctionData({
     abi: bitcoinTunnelManagerAbi,
@@ -35,15 +36,15 @@ export const encodeChallengeWithdrawal = ({
  * @returns {Hex} - The encoded transaction data.
  */
 export const encodeConfirmDeposit = ({
-  vaultIndex,
-  txId,
-  outputIndex,
   extraInfo,
+  outputIndex,
+  txId,
+  vaultIndex,
 }: {
-  vaultIndex: number;
-  txId: string;
-  outputIndex: bigint;
   extraInfo: Hash;
+  outputIndex: bigint;
+  txId: string;
+  vaultIndex: number;
 }) =>
   encodeFunctionData({
     abi: bitcoinTunnelManagerAbi,
@@ -67,13 +68,13 @@ export const encodeConfirmDeposit = ({
  * @returns {Hex} - The encoded transaction data.
  */
 export const encodeInitiateWithdrawal = ({
-  vaultIndex,
-  btcAddress,
   amount,
+  btcAddress,
+  vaultIndex,
 }: {
-  vaultIndex: number;
-  btcAddress: string;
   amount: bigint;
+  btcAddress: string;
+  vaultIndex: number;
 }) =>
   encodeFunctionData({
     abi: bitcoinTunnelManagerAbi,
