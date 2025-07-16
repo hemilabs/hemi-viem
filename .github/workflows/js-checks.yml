@@ -4,10 +4,15 @@ on:
   pull_request:
   push:
 
+permissions:
+  contents: read
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
   cancel-in-progress: true
 
 jobs:
   run-checks-and-tests:
-    uses: bloq/actions/.github/workflows/js-checks.yml@v1
+    uses: hemilabs/actions/.github/workflows/js-checks.yml@v1
+    with:
+      node-versions: '["20", "22", "24"]'

@@ -1,6 +1,6 @@
 # Hemi Viem
 
-![NPM Version](https://img.shields.io/npm/v/hemi-viem)
+[![NPM version](https://img.shields.io/npm/v/hemi-viem)](https://www.npmjs.com/package/hemi-viem) [![Package size](https://img.shields.io/bundlephobia/minzip/hemi-viem)](https://bundlephobia.com/package/hemi-viem) [![Follow Hemi on X](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2Fhemi_xyz&style=flat&logo=x&label=%40hemi_xyz&labelColor=%23ff6c15&color=%230a0a0a)](https://x.com/intent/follow?screen_name=hemi_xyz)
 
 [Viem](https://viem.sh/) extension for the [Hemi](https://hemi.xyz/) network.
 It includes:
