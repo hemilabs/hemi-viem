@@ -1,5 +1,5 @@
 {
-  "!(*.{js,md,ts,tsx,yml}|package.json)": ["prettier --ignore-unknown --write"],
-  "*.{js,md,ts,tsx,yml}": ["eslint --cache --fix --quiet", "prettier --write"],
+  "!(*.{js,md,ts,tsx}|package.json)": ["prettier --ignore-unknown --write"],
+  "*.{js,md,ts,tsx}": ["eslint --cache --fix --quiet", "prettier --write"],
   "package.json": ["better-sort-package-json", "prettier --write"]
 }
