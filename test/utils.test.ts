@@ -7,6 +7,7 @@ import {
   assertAddress,
   assertObject,
   assertHash,
+  assertHex,
   assertBigInt,
 } from "../src/utils";
 
@@ -73,6 +74,21 @@ describe("assertHash", function () {
     expect(() => assertHash("0x123", "test")).toThrow();
     expect(() => assertHash(123, "test")).toThrow();
     expect(() => assertHash(undefined, "test")).toThrow();
+  });
+});
+
+describe("assertHex", function () {
+  it("should not throw for a valid hex", function () {
+    expect(() => assertHex(zeroHash, "test")).not.toThrow();
+    expect(() => assertHex("0x", "test")).not.toThrow();
+    expect(() => assertHex("0x123", "test")).not.toThrow();
+    expect(() => assertHex("0xabcdef", "test")).not.toThrow();
+  });
+  it("should throw for an invalid hex", function () {
+    expect(() => assertHex("123", "test")).toThrow();
+    expect(() => assertHex("0xgg", "test")).toThrow();
+    expect(() => assertHex(123, "test")).toThrow();
+    expect(() => assertHex(undefined, "test")).toThrow();
   });
 });
 

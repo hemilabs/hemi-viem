@@ -1,4 +1,4 @@
-import { Address, Hash, isAddress, isHash } from "viem";
+import { Address, Hash, Hex, isAddress, isHash, isHex } from "viem";
 
 export function assertNonEmptyString(
   value: unknown,
@@ -41,6 +41,14 @@ export function assertObject(
   if (typeof value !== "object" || value === null || Array.isArray(value)) {
     throw new Error(
       `Invalid or missing parameter object: ${name}. Received: ${JSON.stringify(value)}`,
+    );
+  }
+}
+
+export function assertHex(value: unknown, name: string): asserts value is Hex {
+  if (typeof value !== "string" || !isHex(value)) {
+    throw new Error(
+      `Invalid or missing hex parameter: ${name}. Received: ${JSON.stringify(value)}`,
     );
   }
 }

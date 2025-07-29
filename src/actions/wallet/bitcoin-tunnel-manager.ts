@@ -1,4 +1,4 @@
-import { type Address, type Client, type Hash, isHash } from "viem";
+import { type Address, type Client, Hash, type Hex, isHash } from "viem";
 import { writeContract } from "viem/actions";
 
 import {
@@ -8,7 +8,7 @@ import {
 import {
   assertAddress,
   assertBigInt,
-  assertHash,
+  assertHex,
   assertNonEmptyString,
   assertObject,
   assertPositiveInteger,
@@ -17,7 +17,7 @@ import {
 export async function confirmDeposit(
   client: Client,
   parameters: {
-    extraInfo: Hash;
+    extraInfo: Hex;
     from: Address;
     outputIndex: bigint;
     txId: string;
@@ -26,7 +26,7 @@ export async function confirmDeposit(
 ) {
   assertObject(parameters, "parameters");
   const { extraInfo, from, outputIndex, txId, vaultIndex } = parameters;
-  assertHash(extraInfo, "extraInfo");
+  assertHex(extraInfo, "extraInfo");
   assertAddress(from, "from");
   assertBigInt(outputIndex, "outputIndex");
   assertNonEmptyString(txId, "txId");
@@ -70,7 +70,7 @@ export async function initiateWithdrawal(
 export async function challengeWithdrawal(
   client: Client,
   parameters: {
-    extraInfo?: Hash;
+    extraInfo?: Hex;
     from: Address;
     uuid: bigint;
   },
@@ -79,7 +79,7 @@ export async function challengeWithdrawal(
   const { extraInfo = "0x", from, uuid } = parameters;
   assertAddress(from, "from");
   assertBigInt(uuid, "uuid");
-  assertHash(extraInfo, "extraInfo");
+  assertHex(extraInfo, "extraInfo");
 
   return writeContract(client, {
     abi: bitcoinTunnelManagerAbi,
