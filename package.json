@@ -63,8 +63,14 @@
       "require": "./_cjs/index.js",
       "types": "./_types/index.d.ts"
     },
+    "./actions": {
+      "import": "./_esm/actions/index.js",
+      "require": "./_cjs/actions/index.js",
+      "types": "./_types/actions/index.d.ts"
+    },
     "./contracts": {
       "import": "./_esm/contracts/index.js",
+      "require": "./_cjs/contracts/index.js",
       "types": "./_types/contracts/index.d.ts"
     }
   },
