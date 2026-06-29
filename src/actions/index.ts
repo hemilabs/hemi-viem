@@ -14,9 +14,12 @@ export {
 } from "./public/bitcoin-tunnel-encoders.js";
 
 export {
-  getVaultByIndex,
-  getVaultIndexByBTCAddress,
+  getBitcoinChainLastHeader,
   getBitcoinKitAddress,
+  getTunnelManagerStatus,
+  getVaultByIndex,
+  getVaultCounter,
+  getVaultIndexByBTCAddress,
 } from "./public/bitcoin-tunnel-manager.js";
 
 export { getBtcFinalityByBlockHash } from "./public/get-btc-finality-by-block-hash.js";
