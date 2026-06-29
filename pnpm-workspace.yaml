@@ -1,0 +1,46 @@
+allowBuilds:
+  # Ships prebuilt binaries via optionalDependencies; the build script is
+  # only a fallback, so it is safe to skip. pnpm 11 requires an explicit
+  # decision here, otherwise installs fail with ERR_PNPM_IGNORED_BUILDS.
+  esbuild: false
+  unrs-resolver: false
+blockExoticSubdeps: true
+lockfileIncludeTarballUrl: true
+minimumReleaseAge: 10080 # 7 days in minutes
+minimumReleaseAgeExclude:
+  - "@hemilabs/*"
+
+onlyBuiltDependencies: []
+
+overrides:
+  # viem >=2.52 pins ox to exactly 0.14.29, whose experimental `tempo` module
+  # has a type error (TS2322 in tempo/KeyAuthorization.ts). Our build:cjs step
+  # emits CommonJS, which forces classic node resolution that type-checks ox's
+  # raw .ts source and trips the error. Hold viem at 2.51.3 (ox 0.14.25) until
+  # a fixed ox is released. Remove this override then.
+  viem: 2.51.3
+
+packages:
+  - "."
+
+trustPolicy: no-downgrade
+
+trustPolicyExclude:
+  # eslint-config-prettier@8.10.2 (transitive via eslint-config-bloq): no 8.x
+  # release has provenance attestation, only 10.x do, but eslint-config-bloq
+  # requires ^8.0.0 so we cannot migrate to 10.x yet. pnpm's date-based check
+  # still flags 8.10.2 as a downgrade because the attested 10.x releases were
+  # published earlier in time, which is arguably a pnpm bug:
+  # https://github.com/pnpm/pnpm/issues/10622
+  # Remove this exclusion once eslint-config-bloq allows 10.x.
+  - "eslint-config-prettier@8.10.2"
+  # eslint-import-resolver-typescript@3.10.1 (transitive via eslint-config-next
+  # -> eslint-config-bloq): same case as above — no 3.x release has
+  # attestation, only 4.x do, and the required range is ^3.5.2 so we cannot
+  # migrate to 4.x yet. Remove once the dependency chain allows 4.x.
+  - "eslint-import-resolver-typescript@3.10.1"
+  # semver@6.3.1 (transitive via eslint-plugin-import -> eslint-config-bloq)
+  # is a 2023 backport published without provenance, while 7.x releases
+  # earlier in time had it, so `no-downgrade` flags it. There is no attested
+  # version to redirect to.
+  - "semver@6.3.1"

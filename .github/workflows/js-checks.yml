@@ -13,6 +13,6 @@ concurrency:
 
 jobs:
   run-checks-and-tests:
-    uses: hemilabs/actions/.github/workflows/js-checks.yml@06d5e0813de21d92283163864cce2e95ec5b67c6 # v1.0.0
+    uses: hemilabs/.github/.github/workflows/js-checks-pnpm.yml@c1b3c0381dea671b3bc91bdbe08013851c6a6c67
     with:
-      node-versions: '["20", "22", "24"]'
+      node-versions: '["22", "24"]'

@@ -25,7 +25,7 @@
   "main": "./_esm/index.js",
   "repository": "hemilabs/hemi-viem",
   "scripts": {
-    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:types",
+    "build": "pnpm run clean && pnpm run build:esm && pnpm run build:cjs && pnpm run build:types",
     "build:cjs": "tsc --noEmit false --module CommonJS --outDir ./_cjs --sourceMap && echo '{\"type\":\"commonjs\"}' > ./_cjs/package.json",
     "build:esm": "tsc --noEmit false --outDir ./_esm --sourceMap",
     "build:types": "tsc --module esnext --declarationDir ./_types --emitDeclarationOnly --declaration --declarationMap",
@@ -34,7 +34,7 @@
     "format:check": "prettier --check .",
     "lint": "eslint --cache .",
     "prepare": "husky",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "pnpm run build",
     "test": "vitest run",
     "tsc": "tsc --noEmit"
   },
@@ -50,12 +50,13 @@
     "lint-staged": "^15.3.0",
     "prettier": "^3.4.2",
     "typescript": "^5.7.2",
-    "viem": "^2.22.10",
+    "viem": "^2.51.3",
     "vitest": "^3.2.1"
   },
   "peerDependencies": {
     "viem": "^2.x"
   },
+  "packageManager": "pnpm@11.5.2",
   "type": "module",
   "exports": {
     ".": {
