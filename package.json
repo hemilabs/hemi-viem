@@ -60,19 +60,19 @@
   "type": "module",
   "exports": {
     ".": {
+      "types": "./_types/index.d.ts",
       "import": "./_esm/index.js",
-      "require": "./_cjs/index.js",
-      "types": "./_types/index.d.ts"
+      "require": "./_cjs/index.js"
     },
     "./actions": {
+      "types": "./_types/actions/index.d.ts",
       "import": "./_esm/actions/index.js",
-      "require": "./_cjs/actions/index.js",
-      "types": "./_types/actions/index.d.ts"
+      "require": "./_cjs/actions/index.js"
     },
     "./contracts": {
+      "types": "./_types/contracts/index.d.ts",
       "import": "./_esm/contracts/index.js",
-      "require": "./_cjs/contracts/index.js",
-      "types": "./_types/contracts/index.d.ts"
+      "require": "./_cjs/contracts/index.js"
     }
   },
   "module": "./_esm/index.js",
