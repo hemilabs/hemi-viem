@@ -51,7 +51,7 @@
     "prettier": "^3.4.2",
     "typescript": "^5.7.2",
     "viem": "^2.51.3",
-    "vitest": "^3.2.1"
+    "vitest": "^4.1.9"
   },
   "peerDependencies": {
     "viem": "^2.x"
