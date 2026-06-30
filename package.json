@@ -39,7 +39,7 @@
     "tsc": "tsc --noEmit"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.6.1",
+    "@commitlint/cli": "^21.1.0",
     "better-sort-github-actions": "1.0.0",
     "better-sort-package-json": "^1.1.0",
     "commitlint-config-bloq": "^1.0.0",
