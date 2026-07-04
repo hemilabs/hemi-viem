@@ -19,8 +19,15 @@
       "files": ["*.md"]
     },
     {
-      "extends": ["bloq/vitest"],
+      "extends": ["bloq/typescript", "bloq/vitest", "prettier"],
       "files": ["*.test.{js,ts}"]
+    },
+    {
+      "env": {
+        "node": true
+      },
+      "extends": ["bloq/esm", "bloq/typescript", "prettier"],
+      "files": ["*.config.ts"]
     }
   ],
   "parserOptions": {

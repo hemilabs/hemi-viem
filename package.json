@@ -36,10 +36,13 @@
     "prepare": "husky",
     "prepublishOnly": "pnpm run build",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "CI=true vitest run test/e2e",
     "tsc": "tsc --noEmit"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.1.0",
+    "@vitest/coverage-v8": "^4.1.9",
     "better-sort-github-actions": "1.0.0",
     "better-sort-package-json": "^1.1.0",
     "commitlint-config-bloq": "^1.0.0",
