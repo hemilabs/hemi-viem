@@ -202,6 +202,7 @@ describe("bitcoin kit public actions e2e", function () {
     const result = await getLastHeader(client, { bitcoinKitAddress });
     expect(typeof result.height).toBe("number");
     expect(typeof result.blockHash).toBe("string");
+    expect(isHex(result.blockHash)).toBe(true);
   });
 
   it("should return the bitcoin address balance as a bigint", async function () {
