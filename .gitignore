@@ -4,5 +4,6 @@ _types
 .DS_Store
 .eslintcache
 .vscode
+coverage
 node_modules
 tsconfig.tsbuildinfo
