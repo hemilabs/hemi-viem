@@ -73,3 +73,29 @@ $ node example.js
   nonce: 4137790000
 }
 ```
+
+## Development
+
+This project uses [pnpm](https://pnpm.io/) as its package manager. The exact version is pinned in the `packageManager` field of `package.json`.
+
+### Enabling pnpm with corepack
+
+[Corepack](https://nodejs.org/api/corepack.html) ships with Node.js and manages the pnpm version for you, so it always matches the one pinned in this repo. Just enable it once:
+
+```sh
+corepack enable
+```
+
+From then on, running any `pnpm` command inside the project automatically uses the pinned version—no manual install needed.
+
+### Common commands
+
+```sh
+pnpm install         # install dependencies
+pnpm run build       # build ESM, CJS and type declarations
+pnpm test            # run unit tests
+pnpm run test:e2e    # run end-to-end tests
+pnpm run lint        # lint with ESLint
+pnpm run format:check # check formatting with Prettier
+pnpm run tsc         # type-check without emitting
+```
