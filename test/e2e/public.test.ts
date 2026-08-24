@@ -5,6 +5,7 @@ import {
   getBitcoinAddressBalance,
   getLastHeader,
   getUtxosForBitcoinAddress,
+  isAddressValid,
 } from "../../src/actions/public/bitcoin-kit";
 import {
   getBitcoinChainLastHeader,
@@ -221,5 +222,13 @@ describe("bitcoin kit public actions e2e", function () {
       pageSize: 10,
     });
     expect(Array.isArray(result)).toBe(true);
+  });
+
+  it("should return true for a valid bitcoin address", async function () {
+    const result = await isAddressValid(client, {
+      bitcoinKitAddress,
+      btcAddress: custodyAddress,
+    });
+    expect(result).toBe(true);
   });
 });
