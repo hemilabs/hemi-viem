@@ -112,3 +112,19 @@ export async function getUtxosForBitcoinAddress(
     functionName: "getUTXOsForBitcoinAddress",
   });
 }
+
+export async function isAddressValid(
+  client: Client,
+  parameters: { bitcoinKitAddress: Address; btcAddress: string },
+) {
+  assertObject(parameters, "parameters");
+  const { bitcoinKitAddress, btcAddress } = parameters;
+  assertAddress(bitcoinKitAddress, "bitcoinKitAddress");
+  assertNonEmptyString(btcAddress, "btcAddress");
+  return readContract(client, {
+    abi: bitcoinKitTxsAbi,
+    address: bitcoinKitAddress,
+    args: [btcAddress],
+    functionName: "isAddressValid",
+  });
+}

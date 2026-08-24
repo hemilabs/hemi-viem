@@ -5,6 +5,7 @@ export {
   getTransactionByTxId,
   getTxConfirmations,
   getUtxosForBitcoinAddress,
+  isAddressValid,
 } from "./public/bitcoin-kit.js";
 
 export {
