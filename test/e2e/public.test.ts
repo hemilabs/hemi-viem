@@ -231,4 +231,12 @@ describe("bitcoin kit public actions e2e", function () {
     });
     expect(result).toBe(true);
   });
+
+  it("should return false for a string that is not a bitcoin address", async function () {
+    const result = await isAddressValid(client, {
+      bitcoinKitAddress,
+      btcAddress: "invalid-btc-address",
+    });
+    expect(result).toBe(false);
+  });
 });
