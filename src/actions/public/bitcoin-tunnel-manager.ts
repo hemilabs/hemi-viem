@@ -45,7 +45,8 @@ export async function getVaultIndexByBTCAddress(
     functionName: "vaultCounter",
   });
 
-  for (let vaultIndex = 0; vaultIndex < vaultCounter; vaultIndex++) {
+  // Legacy vaults may share a custody address, so search newest first.
+  for (let vaultIndex = vaultCounter - 1; vaultIndex >= 0; vaultIndex--) {
     const vaultAddress = await getVaultByIndex(client, { vaultIndex });
     const bitcoinCustodyAddress = await getBitcoinCustodyAddress(client, {
       vaultAddress,
